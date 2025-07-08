@@ -19,6 +19,7 @@ interface Project {
 const CinematicCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [nextProjects, setNextProjects] = useState([1, 2]);
+  const [showGallery, setShowGallery] = useState(false);
 
   const projects: Project[] = [
     {
@@ -97,6 +98,116 @@ const CinematicCarousel = () => {
     setNextProjects(prev => prev.map(index => (index + 1) % projects.length));
   };
 
+  if (showGallery) {
+    return (
+      <div className="relative w-full h-full overflow-hidden bg-container-bg">
+        {/* Main Content Grid */}
+        <div className="h-full flex">
+          {/* Left Side - Video Player Area */}
+          <div className="flex-1 relative">
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${currentProject.image})` }}
+            />
+            <div className="absolute inset-0 bg-black/40" />
+            
+            {/* Video Player Controls */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="bg-black/60 backdrop-blur-sm rounded-lg p-4 flex items-center space-x-4">
+                <Button size="sm" variant="ghost" className="text-white hover:bg-white/20">
+                  <ChevronLeft className="w-5 h-5" />
+                </Button>
+                <Button size="sm" variant="ghost" className="text-white hover:bg-white/20">
+                  <Play className="w-5 h-5" />
+                </Button>
+                <Button size="sm" variant="ghost" className="text-white hover:bg-white/20">
+                  <ChevronRight className="w-5 h-5" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Video Info */}
+            <div className="absolute bottom-6 left-6 text-white">
+              <h2 className="text-2xl font-bold mb-2">{currentProject.title}</h2>
+              <div className="flex items-center space-x-4 text-sm opacity-80">
+                <span>{currentProject.year}</span>
+                <span>{currentProject.duration}</span>
+                <span>{currentProject.rating}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Gallery */}
+          <div className="w-96 bg-sidebar-bg/95 backdrop-blur-sm p-6 overflow-y-auto">
+            {/* Gallery Header */}
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <div className="flex items-center space-x-3 mb-2">
+                  <span className="text-nav-item font-semibold">Watch Next</span>
+                  <span className="text-sidebar-text text-sm">Trending</span>
+                  <span className="text-sidebar-text text-sm">Recommended</span>
+                </div>
+              </div>
+              <Button 
+                onClick={() => setShowGallery(false)}
+                variant="ghost" 
+                size="sm" 
+                className="text-sidebar-text hover:bg-sidebar-text/20"
+              >
+                <Plus className="w-4 h-4 rotate-45" />
+              </Button>
+            </div>
+
+            {/* Gallery Grid */}
+            <div className="space-y-4">
+              {projects.map((project, index) => (
+                <div 
+                  key={project.id}
+                  onClick={() => setCurrentIndex(index)}
+                  className="flex items-start space-x-3 p-3 rounded-lg hover:bg-card/50 cursor-pointer transition-all duration-200 group"
+                >
+                  {/* Thumbnail */}
+                  <div className="relative w-24 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                    />
+                    {/* Play Overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200">
+                      <Play className="w-5 h-5 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-card-foreground font-medium text-sm leading-tight mb-1 line-clamp-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-card-foreground/70 text-xs mb-2 line-clamp-1">
+                      {project.subtitle}
+                    </p>
+                    <div className="flex items-center space-x-2 text-xs text-card-foreground/60">
+                      <span>{project.year}</span>
+                      <span>•</span>
+                      <span>{project.duration}</span>
+                    </div>
+                    <div className="mt-1">
+                      <span className="bg-nav-item/20 text-nav-item text-xs px-2 py-0.5 rounded">
+                        {project.category}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-container-bg via-container-bg to-black">
       {/* Background Image */}
@@ -158,7 +269,10 @@ const CinematicCarousel = () => {
 
           {/* Action Buttons */}
           <div className="flex items-center space-x-4">
-            <Button className="bg-nav-item hover:bg-nav-item/90 text-accent-foreground rounded-lg px-8 py-3 font-bold">
+            <Button 
+              onClick={() => setShowGallery(true)}
+              className="bg-nav-item hover:bg-nav-item/90 text-accent-foreground rounded-lg px-8 py-3 font-bold"
+            >
               <Play className="w-5 h-5 mr-2" />
               PLAY
             </Button>
