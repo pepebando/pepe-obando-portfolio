@@ -43,23 +43,49 @@ const SpaceInterface = () => {
     name: "Ultimate Guide to Interplanetary Travel",
     image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=80&h=80&fit=crop"
   }];
-
-  const skills = [
-    { title: "Unreal Engine", image: "https://img.icons8.com/color/240/unreal-engine.png" },
-    { title: "Python", image: "https://img.icons8.com/color/240/python--v1.png" },
-    { title: "Wordpress", image: "https://img.icons8.com/color/240/wordpress.png" },
-    { title: "PHP", image: "https://img.icons8.com/offices/240/php-logo.png" },
-    { title: "C++", image: "https://img.icons8.com/fluency/240/c-plus-plus-logo.png" },
-    { title: "C#", image: "https://img.icons8.com/fluency/240/c-sharp-logo.png" },
-    { title: "Node JS", image: "https://img.icons8.com/color/240/nodejs.png" },
-    { title: "Javascript", image: "https://img.icons8.com/fluency/240/javascript.png" },
-    { title: "VUE", image: "https://img.icons8.com/color/240/vue-js.png" },
-    { title: "SQL", image: "https://img.icons8.com/color/240/sql.png" },
-    { title: "MySQL", image: "https://img.icons8.com/color/240/mysql-logo.png" },
-    { title: "Reality Capture", image: "https://img.icons8.com/color/240/3d-glasses.png" },
-    { title: "GIT", image: "https://img.icons8.com/fluency/240/github.png" },
-    { title: "CSS", image: "https://img.icons8.com/color/240/css3.png" }
-  ];
+  const skills = [{
+    title: "Unreal Engine",
+    image: "https://img.icons8.com/color/240/unreal-engine.png"
+  }, {
+    title: "Python",
+    image: "https://img.icons8.com/color/240/python--v1.png"
+  }, {
+    title: "Wordpress",
+    image: "https://img.icons8.com/color/240/wordpress.png"
+  }, {
+    title: "PHP",
+    image: "https://img.icons8.com/offices/240/php-logo.png"
+  }, {
+    title: "C++",
+    image: "https://img.icons8.com/fluency/240/c-plus-plus-logo.png"
+  }, {
+    title: "C#",
+    image: "https://img.icons8.com/fluency/240/c-sharp-logo.png"
+  }, {
+    title: "Node JS",
+    image: "https://img.icons8.com/color/240/nodejs.png"
+  }, {
+    title: "Javascript",
+    image: "https://img.icons8.com/fluency/240/javascript.png"
+  }, {
+    title: "VUE",
+    image: "https://img.icons8.com/color/240/vue-js.png"
+  }, {
+    title: "SQL",
+    image: "https://img.icons8.com/color/240/sql.png"
+  }, {
+    title: "MySQL",
+    image: "https://img.icons8.com/color/240/mysql-logo.png"
+  }, {
+    title: "Reality Capture",
+    image: "https://img.icons8.com/color/240/3d-glasses.png"
+  }, {
+    title: "GIT",
+    image: "https://img.icons8.com/fluency/240/github.png"
+  }, {
+    title: "CSS",
+    image: "https://img.icons8.com/color/240/css3.png"
+  }];
   return <div className="min-h-screen bg-background p-8 px-[33px]">
       {/* Main Container */}
       <div className="max-w-7xl mx-auto h-screen bg-container-bg rounded-3xl overflow-hidden relative">
@@ -107,15 +133,10 @@ const SpaceInterface = () => {
 
           {/* Main Content Area */}
           <div className="col-span-10 relative overflow-hidden">
-            {activeTab === "02" ? (
-              /* Cinematic Carousel */
-              <CinematicCarousel />
-            ) : activeTab === "03" ? (
-              /* Contact Form */
-              <ContactForm />
-            ) : (
-              /* Default Overview Content */
-              <>
+            {activeTab === "02" ? (/* Cinematic Carousel */
+          <CinematicCarousel />) : activeTab === "03" ? (/* Contact Form */
+          <ContactForm />) : (/* Default Overview Content */
+          <>
                 {/* Hero Background */}
                 <div className="absolute inset-0 bg-cover bg-center" style={{
               backgroundImage: `url('/lovable-uploads/21902a73-f377-4f68-af39-db9f4f83a656.png')`
@@ -125,7 +146,7 @@ const SpaceInterface = () => {
 
                 {/* Main Description Section */}
                 <div className="absolute top-1/2 left-8 right-8 transform -translate-y-1/2 z-20">
-                  <div className="text-center">
+                  <div className="text-center bg-[#000a0e]/55 rounded-2xl">
                     <div className="space-y-4">
                       <h1 className="text-4xl font-bold text-card-foreground leading-tight">
                         Pepe Obando
@@ -147,8 +168,8 @@ const SpaceInterface = () => {
                     
                     {/* Social Icons */}
                     <div className="flex justify-center space-x-4 pt-4">
-                      <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
-                      <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
+                      
+                      
                       <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
                     </div>
                   </div>
@@ -159,20 +180,14 @@ const SpaceInterface = () => {
                   <div className="">
                     <h2 className="text-2xl font-bold text-card-foreground mb-6 text-center">Technical Skills</h2>
                     <div className="grid grid-cols-7 gap-4">
-                      {skills.map((skill, index) => (
-                        <div key={index} className="flex flex-col items-center space-y-2 group cursor-pointer">
+                      {skills.map((skill, index) => <div key={index} className="flex flex-col items-center space-y-2 group cursor-pointer">
                           <div className="w-12 h-12 bg-card/80 rounded-lg p-2 group-hover:bg-nav-item/20 transition-colors duration-300 flex items-center justify-center">
-                            <img 
-                              src={skill.image} 
-                              alt={skill.title} 
-                              className="w-8 h-8 object-contain"
-                            />
+                            <img src={skill.image} alt={skill.title} className="w-8 h-8 object-contain" />
                           </div>
                           <span className="text-xs text-card-foreground/80 text-center group-hover:text-nav-item transition-colors duration-300">
                             {skill.title}
                           </span>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
                   </div>
                 </div>
@@ -184,8 +199,7 @@ const SpaceInterface = () => {
                     <span className="text-card-foreground/80 text-xs">Enjoy travel with us</span>
                   </div>
                 </div>
-              </>
-            )}
+              </>)}
           </div>
 
 
