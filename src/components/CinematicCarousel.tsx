@@ -239,7 +239,7 @@ const CinematicCarousel = () => {
         loop: true
       }} className="w-full">
           <CarouselContent className="-ml-4">
-            {filteredProjects.map((project, index) => <CarouselItem key={project.id} className="pl-4 basis-1/6 py-8 px-0">
+            {filteredProjects.map((project, index) => <CarouselItem key={project.id} className="pl-4 basis-1/6 py-5 px-[9px] mx-[15px]">
                 <div className="flex flex-col items-center space-y-3 cursor-pointer transition-all duration-300 relative z-10" onClick={() => setCurrentIndex(index)}>
                   <div className={`w-32 h-24 bg-cover bg-center rounded-xl transition-all duration-300 border-2 ${index === currentIndex ? 'border-nav-item shadow-xl scale-105' : 'border-transparent hover:border-nav-item/30 hover:scale-102'}`} style={{
                 backgroundImage: `url(${project.image})`
