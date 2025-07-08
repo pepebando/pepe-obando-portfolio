@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, Search, User, ChevronDown, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CinematicCarousel from "@/components/CinematicCarousel";
+import ContactForm from "@/components/ContactForm";
 const SpaceInterface = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
   const [activeTab, setActiveTab] = useState("02"); // Set Projects as active by default
@@ -106,9 +107,15 @@ const SpaceInterface = () => {
 
           {/* Main Content Area */}
           <div className="col-span-10 relative overflow-hidden">
-            {activeTab === "02" ? (/* Cinematic Carousel */
-          <CinematicCarousel />) : (/* Default Overview Content */
-          <>
+            {activeTab === "02" ? (
+              /* Cinematic Carousel */
+              <CinematicCarousel />
+            ) : activeTab === "03" ? (
+              /* Contact Form */
+              <ContactForm />
+            ) : (
+              /* Default Overview Content */
+              <>
                 {/* Hero Background */}
                 <div className="absolute inset-0 bg-cover bg-center" style={{
               backgroundImage: `url('/lovable-uploads/21902a73-f377-4f68-af39-db9f4f83a656.png')`
@@ -192,7 +199,8 @@ const SpaceInterface = () => {
                     <span className="text-card-foreground/80 text-xs">Enjoy travel with us</span>
                   </div>
                 </div>
-              </>)}
+              </>
+            )}
           </div>
 
 
