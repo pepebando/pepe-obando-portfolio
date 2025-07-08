@@ -264,7 +264,7 @@ const CinematicCarousel = () => {
               <button
                 key={category.tags}
                 onClick={() => setSelectedCategory(category.tags)}
-                className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${
+                className={`w-full text-right px-4 py-3 rounded-lg transition-all duration-300 ${
                   selectedCategory === category.tags
                     ? 'text-nav-item border-l-4 border-nav-item bg-nav-item/10'
                     : 'text-card-foreground/70 hover:text-card-foreground hover:bg-card-foreground/5'
