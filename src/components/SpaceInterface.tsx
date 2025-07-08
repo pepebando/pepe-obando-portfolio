@@ -45,46 +45,46 @@ const SpaceInterface = () => {
   }];
   const skills = [{
     title: "Unreal Engine",
-    image: "https://img.icons8.com/nolan/240/unreal-engine.png"
+    image: "https://img.icons8.com/color/240/unreal-engine.png"
   }, {
     title: "Python",
-    image: "https://cdn.brandfetch.io/idbpOFBgcc/w/398/h/398/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B"
+    image: "https://img.icons8.com/color/240/python--v1.png"
   }, {
     title: "Wordpress",
-    image: "https://cdn.brandfetch.io/idbnlnCBDY/w/400/h/400/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B"
+    image: "https://img.icons8.com/color/240/wordpress.png"
   }, {
     title: "PHP",
-    image: "https://cdn.brandfetch.io/idYqAg6C_T/w/200/h/200/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B"
+    image: "https://img.icons8.com/offices/240/php-logo.png"
   }, {
     title: "C++",
-    image: "https://img.icons8.com/color/240/c-plus-plus-logo.png"
+    image: "https://img.icons8.com/fluency/240/c-plus-plus-logo.png"
   }, {
     title: "C#",
-    image: "https://img.icons8.com/color/240/c-sharp-logo-2.png"
+    image: "https://img.icons8.com/fluency/240/c-sharp-logo.png"
   }, {
     title: "Node JS",
-    image: "https://img.icons8.com/fluency/240/node-js.png"
+    image: "https://img.icons8.com/color/240/nodejs.png"
   }, {
     title: "Javascript",
-    image: "https://img.icons8.com/color/240/javascript--v1.png"
+    image: "https://img.icons8.com/fluency/240/javascript.png"
   }, {
     title: "VUE",
-    image: "https://img.icons8.com/nolan/240/vue-js.png"
+    image: "https://img.icons8.com/color/240/vue-js.png"
   }, {
     title: "SQL",
-    image: "https://img.icons8.com/external-soft-fill-juicy-fish/240/external-sql-coding-and-development-soft-fill-soft-fill-juicy-fish.png"
+    image: "https://img.icons8.com/color/240/sql.png"
   }, {
     title: "MySQL",
-    image: "https://img.icons8.com/fluency/240/my-sql.png"
+    image: "https://img.icons8.com/color/240/mysql-logo.png"
   }, {
     title: "Reality Capture",
-    image: "https://www.modenatechnologies.com/site/wp-content/uploads/2021/08/RealityCapture-Logo.jpg"
+    image: "https://img.icons8.com/color/240/3d-glasses.png"
   }, {
     title: "GIT",
-    image: "https://img.icons8.com/color/240/git.png"
+    image: "https://img.icons8.com/fluency/240/github.png"
   }, {
     title: "CSS",
-    image: "https://img.icons8.com/ultraviolet/100/css.png"
+    image: "https://img.icons8.com/color/240/css3.png"
   }];
   return <div className="min-h-screen bg-background p-8 px-[33px]">
       {/* Main Container */}
@@ -129,6 +129,23 @@ const SpaceInterface = () => {
                 </div>
                 <span className="text-xs text-sidebar-text text-center opacity-70">{item.label}</span>
               </div>)}
+            
+            {/* Technical Skills in Sidebar */}
+            <div className="text-center">
+              <h3 className="text-lg font-bold text-sidebar-text mb-4">Skills</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {skills.slice(0, 8).map((skill, index) => (
+                  <div key={index} className="flex flex-col items-center space-y-1 group cursor-pointer">
+                    <div className="w-8 h-8 bg-card/80 rounded-lg p-1 group-hover:bg-nav-item/20 transition-colors duration-300 flex items-center justify-center">
+                      <img src={skill.image} alt={skill.title} className="w-6 h-6 object-contain" />
+                    </div>
+                    <span className="text-xs text-sidebar-text/80 text-center group-hover:text-nav-item transition-colors duration-300">
+                      {skill.title}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Main Content Area */}
@@ -169,11 +186,16 @@ const SpaceInterface = () => {
                     <div className="col-span-3 space-y-6">
                       <div className="space-y-4">
                         <h1 className="text-4xl font-bold text-card-foreground leading-tight">
-                          Bridging the Gap Between Earth and Space
+                          Pepe Obando
                         </h1>
                         <p className="text-card-foreground/80 text-sm leading-relaxed max-w-md">
-                          A different approach needed to space tourism, including prehistoric, 
-                          exhibitions, and galleries.
+                          Hey there! I'm a versatile software developer with a strong background in full-stack development, game design, and database management. Passionate about crafting efficient and scalable solutions, I specialize in web development, backend systems, and interactive experiences using modern programming technologies.
+                
+                With experience in JavaScript, Python, C++, C#, PHP, and SQL,I have built dynamic applications, optimized databases, and developed immersive projects in Unreal Engine. My expertise extends to server-side programming with Node.js and MySQL , ensuring seamless integration and performance across different platforms.
+
+                I enjoy solving complex problems, automating workflows, and constantly learning new technologies to stay ahead in the ever-evolving tech landscape. Whether it's building robust web applications, designing efficient databases, or developing interactive 3D experiences, I'm always eager to take on new challenges.
+
+                Feel free to reach out—I'm always open to new projects and collaborations!
                         </p>
                       </div>
                       
