@@ -128,11 +128,16 @@ const SpaceInterface = () => {
                   <div className="text-center">
                     <div className="space-y-4">
                       <h1 className="text-4xl font-bold text-card-foreground leading-tight">
-                        Bridging the Gap Between Earth and Space
+                        Pepe Obando
                       </h1>
-                      <p className="text-card-foreground/80 text-sm leading-relaxed max-w-md mx-auto">
-                        A different approach needed to space tourism, including prehistoric, 
-                        exhibitions, and galleries.
+                      <p className="text-card-foreground/80 text-sm leading-relaxed max-w-4xl mx-auto">
+                        Hey there! I'm a versatile software developer with a strong background in full-stack development, game design, and database management. Passionate about crafting efficient and scalable solutions, I specialize in web development, backend systems, and interactive experiences using modern programming technologies.
+                        <br /><br />
+                        With experience in JavaScript, Python, C++, C#, PHP, and SQL, I have built dynamic applications, optimized databases, and developed immersive projects in Unreal Engine. My expertise extends to server-side programming with Node.js and MySQL, ensuring seamless integration and performance across different platforms.
+                        <br /><br />
+                        I enjoy solving complex problems, automating workflows, and constantly learning new technologies to stay ahead in the ever-evolving tech landscape. Whether it's building robust web applications, designing efficient databases, or developing interactive 3D experiences, I'm always eager to take on new challenges.
+                        <br /><br />
+                        Feel free to reach out—I'm always open to new projects and collaborations!
                       </p>
                     </div>
                     
