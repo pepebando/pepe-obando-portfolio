@@ -125,7 +125,7 @@ const SpaceInterface = () => {
 
                 {/* Main Description Section */}
                 <div className="absolute top-1/2 left-8 right-8 transform -translate-y-1/2 z-20">
-                  <div className="bg-sidebar-bg/80 backdrop-blur-sm rounded-2xl p-6 border border-card-foreground/10 text-center">
+                  <div className="text-center">
                     <div className="space-y-4">
                       <h1 className="text-4xl font-bold text-card-foreground leading-tight">
                         Bridging the Gap Between Earth and Space
@@ -151,7 +151,7 @@ const SpaceInterface = () => {
 
                 {/* Bottom Content - Technical Skills */}
                 <div className="absolute bottom-8 left-8 right-8">
-                  <div className="bg-sidebar-bg/80 backdrop-blur-sm rounded-2xl p-6 border border-card-foreground/10">
+                  <div className="">
                     <h2 className="text-2xl font-bold text-card-foreground mb-6 text-center">Technical Skills</h2>
                     <div className="grid grid-cols-7 gap-4">
                       {skills.map((skill, index) => (
