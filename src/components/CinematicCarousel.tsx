@@ -40,7 +40,7 @@ const CinematicCarousel = () => {
   const [isLoading, setIsLoading] = useState(true);
   const categories = [{
     title: 'All',
-    tags: ''
+    tags: 'all'
   }, {
     title: 'Unreal Engine',
     tags: 'ue'
@@ -126,7 +126,7 @@ const CinematicCarousel = () => {
 
   // Filter projects based on selected category
   useEffect(() => {
-    if (selectedCategory === '') {
+    if (selectedCategory === '' || selectedCategory === 'all') {
       setFilteredProjects(projects);
     } else {
       const filtered = projects.filter(project => project.category.includes(selectedCategory));
