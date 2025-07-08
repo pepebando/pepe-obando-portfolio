@@ -92,30 +92,7 @@ const SpaceInterface = () => {
         
         {/* Top Navigation Bar */}
         <div className="absolute top-0 left-0 right-0 z-30 p-6">
-          <div className="flex justify-between items-center">
-            {/* Left: Menu Button */}
-            <Button variant="ghost" className="bg-sidebar-bg/80 backdrop-blur-sm text-sidebar-text hover:bg-sidebar-bg rounded-full p-3">
-              <Menu className="w-5 h-5" />
-            </Button>
-
-            {/* Center: Language Selector */}
-            <div className="flex items-center space-x-2 bg-sidebar-bg/80 backdrop-blur-sm rounded-full px-4 py-2">
-              <Globe className="w-4 h-4 text-sidebar-text" />
-              <span className="text-sidebar-text text-sm">{selectedLanguage}</span>
-              <span className="text-sidebar-text text-sm">PT</span>
-              <span className="text-sidebar-text text-sm">FR</span>
-            </div>
-
-            {/* Right: Search and Profile */}
-            <div className="flex items-center space-x-3">
-              <Button variant="ghost" className="bg-sidebar-bg/80 backdrop-blur-sm text-sidebar-text hover:bg-sidebar-bg rounded-full p-3">
-                <Search className="w-5 h-5" />
-              </Button>
-              <Button variant="ghost" className="bg-sidebar-bg/80 backdrop-blur-sm text-sidebar-text hover:bg-sidebar-bg rounded-full p-3">
-                <User className="w-5 h-5" />
-              </Button>
-            </div>
-          </div>
+          
         </div>
 
         {/* Main Content Grid */}
