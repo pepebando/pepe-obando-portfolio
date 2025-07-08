@@ -198,7 +198,7 @@ const CinematicCarousel = () => {
   return <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-container-bg via-container-bg to-black">
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{
-      backgroundImage: `url(${currentProject.image})`
+      backgroundImage: `url(/lovable-uploads/6f7b9d98-b659-4a2a-b6f6-661720bac060.png)`
     }} />
       <div className="absolute inset-0 bg-gradient-to-r from-container-bg/90 via-container-bg/60 to-transparent" />
 
