@@ -20,6 +20,19 @@ const CinematicCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [nextProjects, setNextProjects] = useState([1, 2]);
   const [showGallery, setShowGallery] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const categories = [
+    { title: 'All', tags: '' },
+    { title: 'Unreal Engine', tags: 'ue' },
+    { title: 'Web', tags: 'web' },
+    { title: 'Videogames', tags: 'games' },
+    { title: 'Mixed Reality', tags: 'mr' },
+    { title: 'Virtual Reality', tags: 'vr' },
+    { title: 'Archviz', tags: 'archviz' },
+    { title: 'Python', tags: 'py' },
+    { title: 'APPs', tags: 'app' }
+  ];
 
   const projects: Project[] = [
     {
@@ -246,8 +259,24 @@ const CinematicCarousel = () => {
           </div>
         </div>
 
-        {/* Right Content - Empty space */}
-        <div className="flex-1">
+        {/* Right Sidebar - Categories */}
+        <div className="w-64 flex flex-col justify-center space-y-4 pr-8">
+          <h3 className="text-card-foreground font-bold text-lg mb-4">Categories</h3>
+          <div className="space-y-2">
+            {categories.map((category) => (
+              <button
+                key={category.tags}
+                onClick={() => setSelectedCategory(category.tags)}
+                className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${
+                  selectedCategory === category.tags
+                    ? 'text-nav-item border-l-4 border-nav-item bg-nav-item/10'
+                    : 'text-card-foreground/70 hover:text-card-foreground hover:bg-card-foreground/5'
+                }`}
+              >
+                {category.title}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
