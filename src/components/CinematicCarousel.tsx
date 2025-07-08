@@ -239,7 +239,7 @@ const CinematicCarousel = () => {
       </div>
 
       {/* Bottom Carousel - positioned in the red box area */}
-      <div className="absolute bottom-8 left-8 right-8">
+      <div className="absolute bottom-8 left-8 right-8 z-20">
         <Carousel opts={{
           align: "start",
           loop: true
@@ -247,7 +247,7 @@ const CinematicCarousel = () => {
           <CarouselContent className="-ml-4">
             {filteredProjects.map((project, index) => (
               <CarouselItem key={project.id} className="pl-4 basis-1/4">
-                <div className="flex flex-col items-center space-y-3 cursor-pointer transition-all duration-300" onClick={() => setCurrentIndex(index)}>
+                <div className="flex flex-col items-center space-y-3 cursor-pointer transition-all duration-300 relative z-10" onClick={() => setCurrentIndex(index)}>
                   <div className={`w-32 h-24 bg-cover bg-center rounded-xl transition-all duration-300 border-2 ${index === currentIndex ? 'border-nav-item shadow-xl scale-105' : 'border-transparent hover:border-nav-item/30 hover:scale-102'}`} style={{
                     backgroundImage: `url(${project.image})`
                   }} />
@@ -260,8 +260,8 @@ const CinematicCarousel = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10" />
-          <CarouselNext className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10" />
+          <CarouselPrevious className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10 z-10" />
+          <CarouselNext className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10 z-10" />
         </Carousel>
       </div>
 
