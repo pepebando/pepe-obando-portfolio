@@ -185,7 +185,7 @@ const SpaceInterface = () => {
                     <div className="flex justify-center space-x-4 pt-4">
                       
                       
-                      <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
+                      
                     </div>
                   </div>
                 </div>
