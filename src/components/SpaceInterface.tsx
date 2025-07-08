@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Menu, Search, User, ChevronDown, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ProjectViewer3D from "@/components/ProjectViewer3D";
 
 const SpaceInterface = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
+  const [activeTab, setActiveTab] = useState("02"); // Set Projects as active by default
 
   const navigationItems = [
-    { number: "01", label: "Overview", active: true },
-    { number: "02", label: "Exploration", active: false },
-    { number: "03", label: "Discovery", active: false },
+    { number: "01", label: "Overview", active: activeTab === "01" },
+    { number: "02", label: "Projects", active: activeTab === "02" },
+    { number: "03", label: "Discovery", active: activeTab === "03" },
   ];
 
   const rightPanelCards = [
@@ -75,6 +77,7 @@ const SpaceInterface = () => {
             {navigationItems.map((item) => (
               <div 
                 key={item.number}
+                onClick={() => setActiveTab(item.number)}
                 className={`flex flex-col items-center space-y-2 cursor-pointer group transition-all duration-300 ${
                   item.active ? 'opacity-100' : 'opacity-60 hover:opacity-100'
                 }`}
@@ -91,85 +94,93 @@ const SpaceInterface = () => {
             ))}
           </div>
 
-          {/* Main Hero Section */}
+          {/* Main Content Area */}
           <div className="col-span-7 relative overflow-hidden">
-            {/* Hero Background */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1200&h=800&fit=crop')`
-              }}
-            />
-            {/* Cosmic overlay */}
-            <div className="absolute inset-0 bg-gradient-cosmic" />
-            
-            {/* Floating astronaut with flowers effect - using the cosmic hero image */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center opacity-90"
-              style={{
-                backgroundImage: `url('/src/assets/cosmic-hero.jpg')`
-              }}
-            />
-
-            {/* Bottom Content */}
-            <div className="absolute bottom-8 left-8 right-8">
-              <div className="grid grid-cols-5 gap-6 items-end">
+            {activeTab === "02" ? (
+              /* Project Viewer 3D */
+              <ProjectViewer3D />
+            ) : (
+              /* Default Overview Content */
+              <>
+                {/* Hero Background */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url('https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1200&h=800&fit=crop')`
+                  }}
+                />
+                {/* Cosmic overlay */}
+                <div className="absolute inset-0 bg-gradient-cosmic" />
                 
-                {/* Left: Main Description */}
-                <div className="col-span-3 space-y-6">
-                  <div className="space-y-4">
-                    <h1 className="text-4xl font-bold text-card-foreground leading-tight">
-                      Bridging the Gap Between Earth and Space
-                    </h1>
-                    <p className="text-card-foreground/80 text-sm leading-relaxed max-w-md">
-                      A different approach needed to space tourism, including prehistoric, 
-                      exhibitions, and galleries.
-                    </p>
-                  </div>
-                  
-                  <Button className="bg-nav-item text-accent-foreground hover:bg-nav-item/90 rounded-full px-6 py-2">
-                    Discover More
-                  </Button>
-                  
-                  {/* Social Icons */}
-                  <div className="flex space-x-4 pt-4">
-                    <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
-                    <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
-                    <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
-                  </div>
-                </div>
+                {/* Floating astronaut with flowers effect - using the cosmic hero image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center opacity-90"
+                  style={{
+                    backgroundImage: `url('/src/assets/cosmic-hero.jpg')`
+                  }}
+                />
 
-                {/* Right: Planet Navigation */}
-                <div className="col-span-2 space-y-4">
-                  {planetNavigation.map((planet, index) => (
-                    <div key={index} className="flex items-center space-x-3 group cursor-pointer">
-                      <div className="w-16 h-16 rounded-full overflow-hidden bg-card">
-                        <img 
-                          src={planet.image} 
-                          alt={planet.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
+                {/* Bottom Content */}
+                <div className="absolute bottom-8 left-8 right-8">
+                  <div className="grid grid-cols-5 gap-6 items-end">
+                    
+                    {/* Left: Main Description */}
+                    <div className="col-span-3 space-y-6">
+                      <div className="space-y-4">
+                        <h1 className="text-4xl font-bold text-card-foreground leading-tight">
+                          Bridging the Gap Between Earth and Space
+                        </h1>
+                        <p className="text-card-foreground/80 text-sm leading-relaxed max-w-md">
+                          A different approach needed to space tourism, including prehistoric, 
+                          exhibitions, and galleries.
+                        </p>
                       </div>
-                      <div className="flex-1">
-                        <p className="text-xs text-card-foreground/60 mb-1">{planet.name}</p>
-                        <div className="w-6 h-6 bg-nav-item rounded-full flex items-center justify-center">
-                          <ChevronDown className="w-3 h-3 text-accent-foreground" />
-                        </div>
+                      
+                      <Button className="bg-nav-item text-accent-foreground hover:bg-nav-item/90 rounded-full px-6 py-2">
+                        Discover More
+                      </Button>
+                      
+                      {/* Social Icons */}
+                      <div className="flex space-x-4 pt-4">
+                        <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
+                        <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
+                        <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
                       </div>
                     </div>
-                  ))}
+
+                    {/* Right: Planet Navigation */}
+                    <div className="col-span-2 space-y-4">
+                      {planetNavigation.map((planet, index) => (
+                        <div key={index} className="flex items-center space-x-3 group cursor-pointer">
+                          <div className="w-16 h-16 rounded-full overflow-hidden bg-card">
+                            <img 
+                              src={planet.image} 
+                              alt={planet.name}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-xs text-card-foreground/60 mb-1">{planet.name}</p>
+                            <div className="w-6 h-6 bg-nav-item rounded-full flex items-center justify-center">
+                              <ChevronDown className="w-3 h-3 text-accent-foreground" />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                  </div>
                 </div>
 
-              </div>
-            </div>
-
-            {/* Top right stats */}
-            <div className="absolute top-24 right-8">
-              <div className="bg-nav-item/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2">
-                <span className="text-nav-item font-bold">+48K</span>
-                <span className="text-card-foreground/80 text-xs">Enjoy travel with us</span>
-              </div>
-            </div>
+                {/* Top right stats */}
+                <div className="absolute top-24 right-8">
+                  <div className="bg-nav-item/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2">
+                    <span className="text-nav-item font-bold">+48K</span>
+                    <span className="text-card-foreground/80 text-xs">Enjoy travel with us</span>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Right Sidebar */}
