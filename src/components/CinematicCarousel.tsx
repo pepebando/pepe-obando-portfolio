@@ -234,7 +234,7 @@ const CinematicCarousel = () => {
                 {currentProject.year}
               </span>
               <span className="bg-nav-item text-accent-foreground text-xs px-2 py-1 rounded">
-                {currentProject.rating}
+                {currentProject.category}
               </span>
               <span className="text-sm">{currentProject.duration}</span>
               <span className="text-sm">{currentProject.genre}</span>
