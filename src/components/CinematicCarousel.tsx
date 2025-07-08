@@ -166,86 +166,26 @@ const CinematicCarousel = () => {
               WATCH TRAILER
             </Button>
           </div>
+
+          {/* Image Carousel */}
+          <div className="flex space-x-4 mt-8">
+            {projects.map((project, index) => (
+              <div
+                key={project.id}
+                className={`w-20 h-12 bg-cover bg-center rounded-lg cursor-pointer transition-all duration-300 border-2 ${
+                  index === currentIndex 
+                    ? 'border-nav-item shadow-lg scale-110' 
+                    : 'border-border/30 hover:border-nav-item/50'
+                }`}
+                style={{ backgroundImage: `url(${project.image})` }}
+                onClick={() => setCurrentIndex(index)}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* Right Content - Project Preview Cards */}
-        <div className="flex-1 relative">
-          {/* Project Cards Stack */}
-          <div className="absolute inset-0 flex items-center justify-center" style={{ perspective: '1000px' }}>
-            <div className="relative">
-              {projects.map((project, index) => {
-                const offset = index - currentIndex;
-                const isActive = index === currentIndex;
-                
-                return (
-                  <div
-                    key={project.id}
-                    className={`absolute w-64 h-80 bg-gradient-card rounded-2xl overflow-hidden border border-border/20 cursor-pointer transition-all duration-700 ${
-                      isActive ? 'border-nav-item/50 shadow-xl' : ''
-                    }`}
-                    style={{
-                      transform: `
-                        translateX(${offset * 60}px)
-                        translateY(${Math.abs(offset) * 20}px)
-                        rotateY(${offset * 15}deg)
-                        scale(${isActive ? 1 : 0.85})
-                      `,
-                      zIndex: 10 - Math.abs(offset),
-                      opacity: Math.max(0.4, 1 - Math.abs(offset) * 0.3),
-                    }}
-                    onClick={() => setCurrentIndex(index)}
-                  >
-                    {/* Project Image */}
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-container-bg/80 via-transparent to-transparent" />
-                      
-                      {/* Category Tag */}
-                      <div className="absolute top-4 left-4">
-                        <span className="bg-nav-item text-accent-foreground text-xs px-3 py-1 rounded-full font-medium">
-                          {project.category}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Project Info */}
-                    <div className="p-4 space-y-2">
-                      <h3 className="text-card-foreground font-bold text-lg leading-tight">
-                        {project.title}
-                      </h3>
-                      <p className="text-card-foreground/70 text-sm">
-                        {project.subtitle}
-                      </p>
-                      <div className="flex items-center space-x-2 text-xs text-card-foreground/60">
-                        <span>{project.year}</span>
-                        <span>•</span>
-                        <span>{project.duration}</span>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* What's Next Section */}
-          <div className="absolute bottom-8 right-8 space-y-4">
-            <h3 className="text-card-foreground font-bold text-lg">WHAT'S NEXT?</h3>
-            <div className="grid grid-cols-2 gap-3">
-              {nextProjectsList.map((project, index) => (
-                <div 
-                  key={project.id}
-                  className="w-24 h-16 bg-cover bg-center rounded-lg border border-border/30 hover:border-nav-item/50 cursor-pointer transition-all duration-300"
-                  style={{ backgroundImage: `url(${project.image})` }}
-                  onClick={() => setCurrentIndex(projects.findIndex(p => p.id === project.id))}
-                />
-              ))}
-            </div>
-          </div>
+        {/* Right Content - Empty space */}
+        <div className="flex-1">
         </div>
       </div>
 
