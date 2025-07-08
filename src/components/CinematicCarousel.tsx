@@ -218,18 +218,30 @@ const CinematicCarousel = () => {
           </div>
 
           {/* Image Carousel */}
-          <div className="flex space-x-4 mt-8">
+          <div className="flex space-x-6 mt-8">
             {projects.map((project, index) => (
               <div
                 key={project.id}
-                className={`w-20 h-12 bg-cover bg-center rounded-lg cursor-pointer transition-all duration-300 border-2 ${
-                  index === currentIndex 
-                    ? 'border-nav-item shadow-lg scale-110' 
-                    : 'border-border/30 hover:border-nav-item/50'
-                }`}
-                style={{ backgroundImage: `url(${project.image})` }}
+                className="flex flex-col items-center space-y-2 cursor-pointer transition-all duration-300"
                 onClick={() => setCurrentIndex(index)}
-              />
+              >
+                <div
+                  className={`w-20 h-12 bg-cover bg-center rounded-lg transition-all duration-300 border-2 ${
+                    index === currentIndex 
+                      ? 'border-nav-item shadow-lg scale-110' 
+                      : 'border-border/30 hover:border-nav-item/50'
+                  }`}
+                  style={{ backgroundImage: `url(${project.image})` }}
+                />
+                <div className="text-center">
+                  <p className="text-card-foreground text-xs font-medium leading-tight max-w-20 truncate">
+                    {project.title}
+                  </p>
+                  <p className="text-card-foreground/60 text-xs mt-1">
+                    {project.category}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
