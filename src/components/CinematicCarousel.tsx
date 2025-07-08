@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Play, Plus, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 interface Project {
   id: number;
@@ -255,11 +256,27 @@ const CinematicCarousel = () => {
 
         </div>
 
-        {/* Right Sidebar - Categories (repositioned for mobile) */}
-        <div className="absolute top-8 right-4 md:right-8 w-48 md:w-64 bg-container-bg/80 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-card-foreground/10 max-h-[60vh] md:max-h-none overflow-y-auto">
-          <h3 className="text-card-foreground font-bold text-base md:text-lg mb-4">Categories</h3>
+        {/* Mobile Categories Dropdown */}
+        <div className="absolute top-8 left-4 md:hidden z-20">
+          <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+            <SelectTrigger className="w-40 bg-container-bg/80 backdrop-blur-sm border-card-foreground/20 text-card-foreground">
+              <SelectValue placeholder="Filter by category" />
+            </SelectTrigger>
+            <SelectContent className="bg-container-bg border-card-foreground/20">
+              {categories.map(category => (
+                <SelectItem key={category.tags} value={category.tags} className="text-card-foreground hover:bg-nav-item/20">
+                  {category.title}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Desktop Categories Sidebar */}
+        <div className="hidden md:block absolute top-8 right-8 w-64 bg-container-bg/80 backdrop-blur-sm rounded-lg p-6 border border-card-foreground/10 max-h-none overflow-y-auto">
+          <h3 className="text-card-foreground font-bold text-lg mb-4">Categories</h3>
           <div className="space-y-2">
-            {categories.map(category => <button key={category.tags} onClick={() => setSelectedCategory(category.tags)} className={`w-full text-left px-3 md:px-4 py-2 md:py-3 rounded-lg transition-all duration-300 text-sm ${selectedCategory === category.tags ? 'text-nav-item bg-nav-item/20 border border-nav-item/30' : 'text-card-foreground/70 hover:text-card-foreground hover:bg-card-foreground/5'}`}>
+            {categories.map(category => <button key={category.tags} onClick={() => setSelectedCategory(category.tags)} className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 text-sm ${selectedCategory === category.tags ? 'text-nav-item bg-nav-item/20 border border-nav-item/30' : 'text-card-foreground/70 hover:text-card-foreground hover:bg-card-foreground/5'}`}>
                 {category.title}
               </button>)}
           </div>
