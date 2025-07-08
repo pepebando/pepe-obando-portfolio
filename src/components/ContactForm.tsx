@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
-
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,21 +11,17 @@ const ContactForm = () => {
     projectType: "",
     projectDescription: ""
   });
-
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
   };
-
-  return (
-    <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-container-bg via-container-bg to-black">
+  return <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-container-bg via-container-bg to-black">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-20 w-64 h-64 border border-nav-item/30 rotate-45"></div>
@@ -54,29 +49,11 @@ const ContactForm = () => {
             </div>
 
             {/* Social Media Icons */}
-            <div className="flex space-x-4 pt-8">
-              <div className="w-10 h-10 bg-nav-item rounded-full flex items-center justify-center cursor-pointer hover:bg-nav-item/80 transition-colors">
-                <Facebook className="w-5 h-5 text-accent-foreground" />
-              </div>
-              <div className="w-10 h-10 bg-nav-item rounded-full flex items-center justify-center cursor-pointer hover:bg-nav-item/80 transition-colors">
-                <Instagram className="w-5 h-5 text-accent-foreground" />
-              </div>
-              <div className="w-10 h-10 bg-nav-item rounded-full flex items-center justify-center cursor-pointer hover:bg-nav-item/80 transition-colors">
-                <Linkedin className="w-5 h-5 text-accent-foreground" />
-              </div>
-              <div className="w-10 h-10 bg-nav-item rounded-full flex items-center justify-center cursor-pointer hover:bg-nav-item/80 transition-colors">
-                <Twitter className="w-5 h-5 text-accent-foreground" />
-              </div>
-            </div>
+            
 
             {/* Contact Info */}
             <div className="pt-4">
-              <p className="text-card-foreground/70 text-sm">
-                Ready to bring your ideas to life?{" "}
-                <span className="text-nav-item cursor-pointer hover:underline">
-                  Let's get started!
-                </span>
-              </p>
+              
             </div>
           </div>
 
@@ -85,30 +62,17 @@ const ContactForm = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name */}
               <div>
-                <Input
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange("name", e.target.value)}
-                  className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
-                  required
-                />
+                <Input placeholder="Your Name" value={formData.name} onChange={e => handleInputChange("name", e.target.value)} className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50" required />
               </div>
 
               {/* Email */}
               <div>
-                <Input
-                  type="email"
-                  placeholder="Your Email Address"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
-                  className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
-                  required
-                />
+                <Input type="email" placeholder="Your Email Address" value={formData.email} onChange={e => handleInputChange("email", e.target.value)} className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50" required />
               </div>
 
               {/* Project Type */}
               <div>
-                <Select value={formData.projectType} onValueChange={(value) => handleInputChange("projectType", value)}>
+                <Select value={formData.projectType} onValueChange={value => handleInputChange("projectType", value)}>
                   <SelectTrigger className="bg-container-bg/50 border-card-foreground/20 text-card-foreground">
                     <SelectValue placeholder="Select Project Type" />
                   </SelectTrigger>
@@ -126,28 +90,17 @@ const ContactForm = () => {
 
               {/* Project Description */}
               <div>
-                <Textarea
-                  placeholder="Tell me about your project... What are your goals, requirements, and timeline?"
-                  value={formData.projectDescription}
-                  onChange={(e) => handleInputChange("projectDescription", e.target.value)}
-                  className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50 min-h-[120px]"
-                  required
-                />
+                <Textarea placeholder="Tell me about your project... What are your goals, requirements, and timeline?" value={formData.projectDescription} onChange={e => handleInputChange("projectDescription", e.target.value)} className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50 min-h-[120px]" required />
               </div>
 
               {/* Submit Button */}
-              <Button 
-                type="submit"
-                className="w-full bg-nav-item hover:bg-nav-item/90 text-accent-foreground font-bold py-3 rounded-lg text-lg"
-              >
+              <Button type="submit" className="w-full bg-nav-item hover:bg-nav-item/90 text-accent-foreground font-bold py-3 rounded-lg text-lg">
                 Send Message 🚀
               </Button>
             </form>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default ContactForm;
