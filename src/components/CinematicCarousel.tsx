@@ -15,6 +15,18 @@ interface Project {
   category: string;
   featured?: boolean;
 }
+
+interface IndividualProjectMedia {
+  src: string;
+  alt: string;
+  type: string;
+}
+
+interface IndividualProject {
+  id: number;
+  image: string;
+  ImagenesIndividualProjectArray: IndividualProjectMedia[];
+}
 const CinematicCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [nextProjects, setNextProjects] = useState([1, 2]);
@@ -22,6 +34,8 @@ const CinematicCarousel = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [projects, setProjects] = useState<Project[]>([]);
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
+  const [individualProjects, setIndividualProjects] = useState<IndividualProject[]>([]);
+  const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const categories = [{
     title: 'All',
@@ -96,6 +110,19 @@ const CinematicCarousel = () => {
     loadProjects();
   }, []);
 
+  useEffect(() => {
+    const loadIndividualProjects = async () => {
+      try {
+        const response = await fetch('/dataIndividualProject.json');
+        const data = await response.json();
+        setIndividualProjects(data);
+      } catch (error) {
+        console.error('Error loading individual projects:', error);
+      }
+    };
+    loadIndividualProjects();
+  }, []);
+
   // Filter projects based on selected category
   useEffect(() => {
     if (selectedCategory === '') {
@@ -116,48 +143,55 @@ const CinematicCarousel = () => {
       </div>;
   }
   if (showGallery) {
+    const currentIndividualProject = individualProjects.find(p => p.id === currentProject.id);
+    const mediaItems = currentIndividualProject?.ImagenesIndividualProjectArray || [];
+    
     return <div className="relative w-full h-full overflow-hidden bg-container-bg">
-        {/* Main Content Grid */}
-        <div className="h-full flex">
-          {/* Left Side - Full Screen Video Player */}
-          <div className="flex-1 relative">
-            {/* Background Image */}
-            <div className="absolute inset-0 bg-cover bg-center" style={{
-            backgroundImage: `url(${currentProject.image})`
-          }} />
-            <div className="absolute inset-0 bg-black/40" />
-            
-            {/* Video Player Controls */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-black/60 backdrop-blur-sm rounded-lg p-4 flex items-center space-x-4">
-                <Button size="sm" variant="ghost" className="text-white hover:bg-white/20">
-                  <ChevronLeft className="w-5 h-5" />
-                </Button>
-                <Button size="sm" variant="ghost" className="text-white hover:bg-white/20">
-                  <Play className="w-5 h-5" />
-                </Button>
-                <Button size="sm" variant="ghost" className="text-white hover:bg-white/20">
-                  <ChevronRight className="w-5 h-5" />
-                </Button>
-              </div>
-            </div>
+        {/* Close Button */}
+        <Button onClick={() => setShowGallery(false)} variant="ghost" size="sm" className="absolute top-6 right-6 text-white hover:bg-white/20 z-50">
+          <Plus className="w-5 h-5 rotate-45" />
+        </Button>
 
-            {/* Video Info */}
-            <div className="absolute bottom-6 left-6 text-white">
-              <h2 className="text-2xl font-bold mb-2">{currentProject.title}</h2>
-              <div className="flex items-center space-x-4 text-sm opacity-80">
-                <span>{currentProject.year}</span>
-                <span>{currentProject.duration}</span>
-                <span>{currentProject.rating}</span>
-              </div>
-            </div>
+        {/* Main Carousel Container */}
+        <div className="h-full flex items-center justify-center p-8">
+          <Carousel opts={{
+            align: "center",
+            loop: true
+          }} className="w-full max-w-6xl">
+            <CarouselContent>
+              {mediaItems.map((media, index) => (
+                <CarouselItem key={index} className="flex items-center justify-center">
+                  <div className="w-full h-[80vh] flex items-center justify-center bg-black/20 rounded-xl">
+                    {media.type === "video" ? (
+                      <video 
+                        controls 
+                        className="max-w-full max-h-full object-contain rounded-lg"
+                        src={media.src}
+                      />
+                    ) : (
+                      <img 
+                        src={media.src} 
+                        alt={media.alt} 
+                        className="max-w-full max-h-full object-contain rounded-lg"
+                      />
+                    )}
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="text-white border-white/30 hover:bg-white/20 left-4" />
+            <CarouselNext className="text-white border-white/30 hover:bg-white/20 right-4" />
+          </Carousel>
+        </div>
 
-            {/* Close Button */}
-            <Button onClick={() => setShowGallery(false)} variant="ghost" size="sm" className="absolute top-6 right-6 text-white hover:bg-white/20">
-              <Plus className="w-5 h-5 rotate-45" />
-            </Button>
+        {/* Project Info */}
+        <div className="absolute bottom-6 left-6 text-white">
+          <h2 className="text-2xl font-bold mb-2">{currentProject.title}</h2>
+          <div className="flex items-center space-x-4 text-sm opacity-80">
+            <span>{currentProject.year}</span>
+            <span>{currentProject.duration}</span>
+            <span>{currentProject.rating}</span>
           </div>
-
         </div>
       </div>;
   }
