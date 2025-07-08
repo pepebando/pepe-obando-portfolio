@@ -139,7 +139,10 @@ const SpaceInterface = () => {
                       </p>
                     </div>
                     
-                    <Button className="bg-nav-item text-accent-foreground hover:bg-nav-item/90 rounded-full px-6 py-2 mt-6">
+                    <Button 
+                      onClick={() => setActiveTab("02")}
+                      className="bg-nav-item text-accent-foreground hover:bg-nav-item/90 rounded-full px-6 py-2 mt-6"
+                    >
                       Discover More
                     </Button>
                     
