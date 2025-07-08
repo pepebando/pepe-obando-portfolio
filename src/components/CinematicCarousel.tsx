@@ -23,6 +23,7 @@ const CinematicCarousel = () => {
   const [showGallery, setShowGallery] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [projects, setProjects] = useState<Project[]>([]);
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const categories = [
@@ -83,8 +84,21 @@ const CinematicCarousel = () => {
     loadProjects();
   }, []);
 
-  const currentProject = projects[currentIndex];
-  const nextProjectsList = nextProjects.map(index => projects[index % projects.length]);
+  // Filter projects based on selected category
+  useEffect(() => {
+    if (selectedCategory === '') {
+      setFilteredProjects(projects);
+    } else {
+      const filtered = projects.filter(project => 
+        project.category.includes(selectedCategory)
+      );
+      setFilteredProjects(filtered);
+    }
+    setCurrentIndex(0); // Reset to first project when filtering
+  }, [selectedCategory, projects]);
+
+  const currentProject = filteredProjects[currentIndex] || projects[0];
+  const nextProjectsList = nextProjects.map(index => filteredProjects[index % filteredProjects.length]);
 
   // Show loading state while projects are being fetched
   if (isLoading || !currentProject) {
@@ -234,7 +248,7 @@ const CinematicCarousel = () => {
               className="w-full"
             >
               <CarouselContent className="-ml-4">
-                {projects.map((project, index) => (
+                {filteredProjects.map((project, index) => (
                   <CarouselItem key={project.id} className="pl-4 basis-1/4">
                     <div
                       className="flex flex-col items-center space-y-3 cursor-pointer transition-all duration-300"
@@ -263,17 +277,17 @@ const CinematicCarousel = () => {
           </div>
         </div>
 
-        {/* Right Sidebar - Categories */}
-        <div className="w-64 flex flex-col justify-center items-end space-y-4 pr-8">
+        {/* Right Sidebar - Categories (positioned to match the red box in design) */}
+        <div className="absolute top-8 right-8 w-64 bg-container-bg/80 backdrop-blur-sm rounded-lg p-6 border border-card-foreground/10">
           <h3 className="text-card-foreground font-bold text-lg mb-4">Categories</h3>
           <div className="space-y-2">
             {categories.map((category) => (
               <button
                 key={category.tags}
                 onClick={() => setSelectedCategory(category.tags)}
-                className={`w-full text-right px-4 py-3 rounded-lg transition-all duration-300 ${
+                className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${
                   selectedCategory === category.tags
-                    ? 'text-nav-item border-l-4 border-nav-item bg-nav-item/10'
+                    ? 'text-nav-item bg-nav-item/20 border border-nav-item/30'
                     : 'text-card-foreground/70 hover:text-card-foreground hover:bg-card-foreground/5'
                 }`}
               >
