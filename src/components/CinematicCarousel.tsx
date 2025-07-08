@@ -217,9 +217,6 @@ const CinematicCarousel = () => {
               <Play className="w-5 h-5 mr-2" />
               PLAY
             </Button>
-            <Button variant="outline" className="border-card-foreground/30 text-card-foreground hover:bg-card-foreground/10 rounded-lg px-6 py-3">
-              WATCH TRAILER
-            </Button>
           </div>
 
         </div>
