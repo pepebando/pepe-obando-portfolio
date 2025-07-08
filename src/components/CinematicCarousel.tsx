@@ -286,8 +286,8 @@ const CinematicCarousel = () => {
                 </div>
               </CarouselItem>)}
           </CarouselContent>
-          <CarouselPrevious className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10 z-10 mx-[21px]" />
-          <CarouselNext className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10 z-10 px-0 mx-[23px]" />
+          <CarouselPrevious className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10 z-10 -left-4 top-1/2 -translate-y-1/2" />
+          <CarouselNext className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10 z-10 -right-4 top-1/2 -translate-y-1/2" />
         </Carousel>
       </div>
 
