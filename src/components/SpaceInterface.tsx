@@ -151,7 +151,7 @@ const SpaceInterface = () => {
                   <div className="grid grid-cols-5 gap-6 items-end">
                     
                     {/* Left: Main Description */}
-                    <div className="col-span-3 space-y-6">
+                    <div className="col-span-5 space-y-6">
                       <div className="space-y-4">
                         <h1 className="text-4xl font-bold text-card-foreground leading-tight">
                           Bridging the Gap Between Earth and Space
@@ -172,21 +172,6 @@ const SpaceInterface = () => {
                         <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
                         <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
                       </div>
-                    </div>
-
-                    {/* Right: Technical Skills */}
-                    <div className="col-span-2 space-y-4">
-                      {skills.slice(0, 3).map((skill, index) => <div key={index} className="flex items-center space-x-3 group cursor-pointer">
-                          <div className="w-16 h-16 rounded-full overflow-hidden bg-card p-3">
-                            <img src={skill.image} alt={skill.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
-                          </div>
-                          <div className="flex-1">
-                            <p className="text-xs text-card-foreground/60 mb-1">{skill.title}</p>
-                            <div className="w-6 h-6 bg-nav-item rounded-full flex items-center justify-center">
-                              <ChevronDown className="w-3 h-3 text-accent-foreground" />
-                            </div>
-                          </div>
-                        </div>)}
                     </div>
 
                   </div>
