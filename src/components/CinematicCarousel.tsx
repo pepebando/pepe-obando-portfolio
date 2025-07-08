@@ -88,15 +88,6 @@ const CinematicCarousel = () => {
   const currentProject = projects[currentIndex];
   const nextProjectsList = nextProjects.map(index => projects[index % projects.length]);
 
-  const handlePrevious = () => {
-    setCurrentIndex(prev => (prev - 1 + projects.length) % projects.length);
-    setNextProjects(prev => prev.map(index => (index - 1 + projects.length) % projects.length));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex(prev => (prev + 1) % projects.length);
-    setNextProjects(prev => prev.map(index => (index + 1) % projects.length));
-  };
 
   if (showGallery) {
     return (
@@ -303,38 +294,6 @@ const CinematicCarousel = () => {
         </div>
       </div>
 
-      {/* Navigation Controls */}
-      <button
-        onClick={handlePrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-glass-overlay backdrop-blur-sm rounded-full flex items-center justify-center text-card-foreground hover:bg-nav-item/20 transition-all duration-300"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
-
-      <button
-        onClick={handleNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-glass-overlay backdrop-blur-sm rounded-full flex items-center justify-center text-card-foreground hover:bg-nav-item/20 transition-all duration-300"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
-
-      {/* Bottom Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2">
-        {projects.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex ? 'bg-nav-item w-8' : 'bg-card-foreground/30 hover:bg-card-foreground/50'
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* Close Button */}
-      <button className="absolute top-8 right-8 w-10 h-10 bg-glass-overlay backdrop-blur-sm rounded-full flex items-center justify-center text-card-foreground hover:bg-nav-item/20 transition-all duration-300">
-        <Plus className="w-5 h-5 rotate-45" />
-      </button>
     </div>
   );
 };
