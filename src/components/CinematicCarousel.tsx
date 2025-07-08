@@ -189,9 +189,6 @@ const CinematicCarousel = () => {
             <h1 className="text-5xl font-black text-card-foreground leading-none tracking-tighter">
               {currentProject.title.split(" ").map((word, index) => <div key={index} className="inline-block mx-[7px]">
                   {word}
-                  {index === 0 && <span className="text-nav-item text-4xl ml-2">
-                      {currentProject.id}
-                    </span>}
                 </div>)}
             </h1>
           </div>
