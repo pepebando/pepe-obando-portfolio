@@ -43,49 +43,23 @@ const SpaceInterface = () => {
     name: "Ultimate Guide to Interplanetary Travel",
     image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=80&h=80&fit=crop"
   }];
-  const skills = [{
-    title: "Unreal Engine",
-    image: "https://img.icons8.com/nolan/240/unreal-engine.png"
-  }, {
-    title: "Python",
-    image: "https://cdn.brandfetch.io/idbpOFBgcc/w/398/h/398/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B"
-  }, {
-    title: "Wordpress",
-    image: "https://cdn.brandfetch.io/idbnlnCBDY/w/400/h/400/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B"
-  }, {
-    title: "PHP",
-    image: "https://cdn.brandfetch.io/idYqAg6C_T/w/200/h/200/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B"
-  }, {
-    title: "C++",
-    image: "https://img.icons8.com/color/240/c-plus-plus-logo.png"
-  }, {
-    title: "C#",
-    image: "https://img.icons8.com/color/240/c-sharp-logo-2.png"
-  }, {
-    title: "Node JS",
-    image: "https://img.icons8.com/fluency/240/node-js.png"
-  }, {
-    title: "Javascript",
-    image: "https://img.icons8.com/color/240/javascript--v1.png"
-  }, {
-    title: "VUE",
-    image: "https://img.icons8.com/nolan/240/vue-js.png"
-  }, {
-    title: "SQL",
-    image: "https://img.icons8.com/external-soft-fill-juicy-fish/240/external-sql-coding-and-development-soft-fill-soft-fill-juicy-fish.png"
-  }, {
-    title: "MySQL",
-    image: "https://img.icons8.com/fluency/240/my-sql.png"
-  }, {
-    title: "Reality Capture",
-    image: "https://www.modenatechnologies.com/site/wp-content/uploads/2021/08/RealityCapture-Logo.jpg"
-  }, {
-    title: "GIT",
-    image: "https://img.icons8.com/color/240/git.png"
-  }, {
-    title: "CSS",
-    image: "https://img.icons8.com/ultraviolet/100/css.png"
-  }];
+
+  const skills = [
+    { title: "Unreal Engine", image: "https://img.icons8.com/color/240/unreal-engine.png" },
+    { title: "Python", image: "https://img.icons8.com/color/240/python--v1.png" },
+    { title: "Wordpress", image: "https://img.icons8.com/color/240/wordpress.png" },
+    { title: "PHP", image: "https://img.icons8.com/offices/240/php-logo.png" },
+    { title: "C++", image: "https://img.icons8.com/fluency/240/c-plus-plus-logo.png" },
+    { title: "C#", image: "https://img.icons8.com/fluency/240/c-sharp-logo.png" },
+    { title: "Node JS", image: "https://img.icons8.com/color/240/nodejs.png" },
+    { title: "Javascript", image: "https://img.icons8.com/fluency/240/javascript.png" },
+    { title: "VUE", image: "https://img.icons8.com/color/240/vue-js.png" },
+    { title: "SQL", image: "https://img.icons8.com/color/240/sql.png" },
+    { title: "MySQL", image: "https://img.icons8.com/color/240/mysql-logo.png" },
+    { title: "Reality Capture", image: "https://img.icons8.com/color/240/3d-glasses.png" },
+    { title: "GIT", image: "https://img.icons8.com/fluency/240/github.png" },
+    { title: "CSS", image: "https://img.icons8.com/color/240/css3.png" }
+  ];
   return <div className="min-h-screen bg-background p-8 px-[33px]">
       {/* Main Container */}
       <div className="max-w-7xl mx-auto h-screen bg-container-bg rounded-3xl overflow-hidden relative">
@@ -133,10 +107,15 @@ const SpaceInterface = () => {
 
           {/* Main Content Area */}
           <div className="col-span-10 relative overflow-hidden">
-            {activeTab === "02" ? (/* Cinematic Carousel */
-          <CinematicCarousel />) : activeTab === "03" ? (/* Contact Form */
-          <ContactForm />) : (/* Default Overview Content */
-          <>
+            {activeTab === "02" ? (
+              /* Cinematic Carousel */
+              <CinematicCarousel />
+            ) : activeTab === "03" ? (
+              /* Contact Form */
+              <ContactForm />
+            ) : (
+              /* Default Overview Content */
+              <>
                 {/* Hero Background */}
                 <div className="absolute inset-0 bg-cover bg-center" style={{
               backgroundImage: `url('/lovable-uploads/21902a73-f377-4f68-af39-db9f4f83a656.png')`
@@ -144,66 +123,57 @@ const SpaceInterface = () => {
                 {/* Cosmic overlay */}
                 <div className="absolute inset-0 bg-gradient-cosmic" />
 
-                {/* Skills Section */}
+                {/* Main Description Section */}
                 <div className="absolute top-1/2 left-8 right-8 transform -translate-y-1/2 z-20">
-                  <div className="backdrop-blur-sm rounded-2xl p-6 border border-card-foreground/10 bg-[#000a0e]/[0.62] my-0 py-[25px]">
-                    <h2 className="text-2xl font-bold text-card-foreground mb-6 text-center">Technical Skills</h2>
-                    <div className="grid grid-cols-7 gap-4">
-                      {skills.map((skill, index) => <div key={index} className="flex flex-col items-center space-y-2 group cursor-pointer">
-                          <div className="w-12 h-12 bg-card/80 rounded-lg p-2 group-hover:bg-nav-item/20 transition-colors duration-300 flex items-center justify-center">
-                            <img src={skill.image} alt={skill.title} className="w-8 h-8 object-contain" />
-                          </div>
-                          <span className="text-xs text-card-foreground/80 text-center group-hover:text-nav-item transition-colors duration-300">
-                            {skill.title}
-                          </span>
-                        </div>)}
+                  <div className="text-center">
+                    <div className="space-y-4">
+                      <h1 className="text-4xl font-bold text-card-foreground leading-tight">
+                        Pepe Obando
+                      </h1>
+                      <p className="text-card-foreground/80 text-sm leading-relaxed max-w-4xl mx-auto">
+                        Hey there! I'm a versatile software developer with a strong background in full-stack development, game design, and database management. Passionate about crafting efficient and scalable solutions, I specialize in web development, backend systems, and interactive experiences using modern programming technologies.
+                        <br /><br />
+                        With experience in JavaScript, Python, C++, C#, PHP, and SQL, I have built dynamic applications, optimized databases, and developed immersive projects in Unreal Engine. My expertise extends to server-side programming with Node.js and MySQL, ensuring seamless integration and performance across different platforms.
+                        <br /><br />
+                        I enjoy solving complex problems, automating workflows, and constantly learning new technologies to stay ahead in the ever-evolving tech landscape. Whether it's building robust web applications, designing efficient databases, or developing interactive 3D experiences, I'm always eager to take on new challenges.
+                        <br /><br />
+                        Feel free to reach out—I'm always open to new projects and collaborations!
+                      </p>
+                    </div>
+                    
+                    <Button className="bg-nav-item text-accent-foreground hover:bg-nav-item/90 rounded-full px-6 py-2 mt-6">
+                      Discover More
+                    </Button>
+                    
+                    {/* Social Icons */}
+                    <div className="flex justify-center space-x-4 pt-4">
+                      <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
+                      <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
+                      <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
                     </div>
                   </div>
                 </div>
 
-                {/* Bottom Content */}
+                {/* Bottom Content - Technical Skills */}
                 <div className="absolute bottom-8 left-8 right-8">
-                  <div className="grid grid-cols-5 gap-6 items-end">
-                    
-                    {/* Left: Main Description */}
-                    <div className="col-span-3 space-y-6">
-                      <div className="space-y-4">
-                        <h1 className="text-4xl font-bold text-card-foreground leading-tight">
-                          Bridging the Gap Between Earth and Space
-                        </h1>
-                        <p className="text-card-foreground/80 text-sm leading-relaxed max-w-md">
-                          A different approach needed to space tourism, including prehistoric, 
-                          exhibitions, and galleries.
-                        </p>
-                      </div>
-                      
-                      <Button className="bg-nav-item text-accent-foreground hover:bg-nav-item/90 rounded-full px-6 py-2">
-                        Discover More
-                      </Button>
-                      
-                      {/* Social Icons */}
-                      <div className="flex space-x-4 pt-4">
-                        <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
-                        <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
-                        <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
-                      </div>
-                    </div>
-
-                    {/* Right: Technical Skills */}
-                    <div className="col-span-2 space-y-4">
-                      {skills.slice(0, 3).map((skill, index) => <div key={index} className="flex items-center space-x-3 group cursor-pointer">
-                          <div className="w-16 h-16 rounded-full overflow-hidden bg-card p-3">
-                            <img src={skill.image} alt={skill.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
+                  <div className="">
+                    <h2 className="text-2xl font-bold text-card-foreground mb-6 text-center">Technical Skills</h2>
+                    <div className="grid grid-cols-7 gap-4">
+                      {skills.map((skill, index) => (
+                        <div key={index} className="flex flex-col items-center space-y-2 group cursor-pointer">
+                          <div className="w-12 h-12 bg-card/80 rounded-lg p-2 group-hover:bg-nav-item/20 transition-colors duration-300 flex items-center justify-center">
+                            <img 
+                              src={skill.image} 
+                              alt={skill.title} 
+                              className="w-8 h-8 object-contain"
+                            />
                           </div>
-                          <div className="flex-1">
-                            <p className="text-xs text-card-foreground/60 mb-1">{skill.title}</p>
-                            <div className="w-6 h-6 bg-nav-item rounded-full flex items-center justify-center">
-                              <ChevronDown className="w-3 h-3 text-accent-foreground" />
-                            </div>
-                          </div>
-                        </div>)}
+                          <span className="text-xs text-card-foreground/80 text-center group-hover:text-nav-item transition-colors duration-300">
+                            {skill.title}
+                          </span>
+                        </div>
+                      ))}
                     </div>
-
                   </div>
                 </div>
 
@@ -214,7 +184,8 @@ const SpaceInterface = () => {
                     <span className="text-card-foreground/80 text-xs">Enjoy travel with us</span>
                   </div>
                 </div>
-              </>)}
+              </>
+            )}
           </div>
 
 
