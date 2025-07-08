@@ -1,9 +1,6 @@
-import { useState, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Text, Box, OrbitControls } from "@react-three/drei";
+import { useState } from "react";
 import { Play, Plus, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import * as THREE from "three";
 
 interface Project {
   id: number;
@@ -17,34 +14,6 @@ interface Project {
   image: string;
   category: string;
   featured?: boolean;
-}
-
-// 3D Card Component
-function Card3D({ position, rotation, scale, project, isActive, onClick }: any) {
-  const meshRef = useRef<THREE.Mesh>(null);
-  
-  useFrame((state) => {
-    if (meshRef.current && isActive) {
-      meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1;
-    }
-  });
-
-  return (
-    <group position={position} rotation={rotation} scale={scale} onClick={onClick}>
-      <Box ref={meshRef} args={[3, 4, 0.1]}>
-        <meshStandardMaterial color={isActive ? "#ff6b35" : "#2a2a2a"} />
-      </Box>
-      <Text
-        position={[0, 0, 0.06]}
-        fontSize={0.3}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {project.title}
-      </Text>
-    </group>
-  );
 }
 
 const CinematicCarousel = () => {
@@ -199,36 +168,68 @@ const CinematicCarousel = () => {
           </div>
         </div>
 
-        {/* Right Content - 3D Scene */}
+        {/* Right Content - Project Preview Cards */}
         <div className="flex-1 relative">
-          {/* 3D Canvas */}
-          <div className="absolute inset-0">
-            <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
-              <ambientLight intensity={0.4} />
-              <directionalLight position={[10, 10, 5]} intensity={1} />
-              
+          {/* Project Cards Stack */}
+          <div className="absolute inset-0 flex items-center justify-center" style={{ perspective: '1000px' }}>
+            <div className="relative">
               {projects.map((project, index) => {
-                const angle = (index - currentIndex) * (Math.PI / 3);
-                const radius = 4;
-                const x = Math.sin(angle) * radius;
-                const z = Math.cos(angle) * radius;
-                const y = (index - currentIndex) * 0.5;
+                const offset = index - currentIndex;
+                const isActive = index === currentIndex;
                 
                 return (
-                  <Card3D
+                  <div
                     key={project.id}
-                    position={[x, y, z]}
-                    rotation={[0, -angle, 0]}
-                    scale={index === currentIndex ? 1.2 : 0.8}
-                    project={project}
-                    isActive={index === currentIndex}
+                    className={`absolute w-64 h-80 bg-gradient-card rounded-2xl overflow-hidden border border-border/20 cursor-pointer transition-all duration-700 ${
+                      isActive ? 'border-nav-item/50 shadow-xl' : ''
+                    }`}
+                    style={{
+                      transform: `
+                        translateX(${offset * 60}px)
+                        translateY(${Math.abs(offset) * 20}px)
+                        rotateY(${offset * 15}deg)
+                        scale(${isActive ? 1 : 0.85})
+                      `,
+                      zIndex: 10 - Math.abs(offset),
+                      opacity: Math.max(0.4, 1 - Math.abs(offset) * 0.3),
+                    }}
                     onClick={() => setCurrentIndex(index)}
-                  />
+                  >
+                    {/* Project Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-container-bg/80 via-transparent to-transparent" />
+                      
+                      {/* Category Tag */}
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-nav-item text-accent-foreground text-xs px-3 py-1 rounded-full font-medium">
+                          {project.category}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Project Info */}
+                    <div className="p-4 space-y-2">
+                      <h3 className="text-card-foreground font-bold text-lg leading-tight">
+                        {project.title}
+                      </h3>
+                      <p className="text-card-foreground/70 text-sm">
+                        {project.subtitle}
+                      </p>
+                      <div className="flex items-center space-x-2 text-xs text-card-foreground/60">
+                        <span>{project.year}</span>
+                        <span>•</span>
+                        <span>{project.duration}</span>
+                      </div>
+                    </div>
+                  </div>
                 );
               })}
-              
-              <OrbitControls enableZoom={false} enablePan={false} />
-            </Canvas>
+            </div>
           </div>
 
           {/* What's Next Section */}
