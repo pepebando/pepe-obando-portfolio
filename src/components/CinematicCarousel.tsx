@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Play, Plus, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -21,6 +21,7 @@ const CinematicCarousel = () => {
   const [nextProjects, setNextProjects] = useState([1, 2]);
   const [showGallery, setShowGallery] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [projects, setProjects] = useState<Project[]>([]);
 
   const categories = [
     { title: 'All', tags: '' },
@@ -34,69 +35,49 @@ const CinematicCarousel = () => {
     { title: 'APPs', tags: 'app' }
   ];
 
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: "THE SKIN MAKER",
-      subtitle: "HORROR SERIES",
-      year: "2023",
-      duration: "1h 27min",
-      rating: "18+",
-      genre: "Horror",
-      description: "Si no tuviera una idea para crear algo yo creo que que vivía lo normal, y me concentraría en todos los detalles de su funcionamiento y no querías agente esta idea me queda mal.",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=400&fit=crop",
-      category: "VR Experience",
-      featured: true
-    },
-    {
-      id: 2,
-      title: "SKIN WALKER: HUNTING",
-      subtitle: "HORROR MOVIE",
-      year: "2023",
-      duration: "2h 06min",
-      rating: "18+",
-      genre: "Psycho Terror",
-      description: "A group of young people decide to go out to their family's cabin in the woods for a weekend, they will be the ones who end up hunted. Skin Walker: A living creature that no one can describe, and that few live to tell its story.",
-      image: "https://images.unsplash.com/photo-1573007217579-42b89ee8e570?w=800&h=400&fit=crop",
-      category: "Game Development"
-    },
-    {
-      id: 3,
-      title: "SEE YOU AT THE GRAVE",
-      subtitle: "COMEDY SERIES",
-      year: "2023",
-      duration: "56m 53sec",
-      rating: "12+",
-      genre: "Comedy",
-      description: "When you come to think that death cannot be more inevitable; now you have to live with realities that show satire on people fighting. About life and death. Produced by WolvesClub Studio. Graphics 2023.",
-      image: "https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=800&h=400&fit=crop",
-      category: "Web Development"
-    },
-    {
-      id: 4,
-      title: "ARCHITECTURAL DREAMS",
-      subtitle: "ARCHVIZ PROJECT",
-      year: "2024",
-      duration: "15min",
-      rating: "G",
-      genre: "Documentary",
-      description: "Immersive architectural visualization showcasing modern design and construction techniques.",
-      image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=400&fit=crop",
-      category: "ArchViz"
-    },
-    {
-      id: 5,
-      title: "VR MEDICAL TRAINING",
-      subtitle: "INTERACTIVE EXPERIENCE",
-      year: "2024",
-      duration: "30min",
-      rating: "G",
-      genre: "Educational",
-      description: "Virtual reality training modules for medical professionals and students.",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=400&fit=crop",
-      category: "VR/Medical"
-    }
-  ];
+  useEffect(() => {
+    const loadProjects = async () => {
+      try {
+        const response = await fetch('/dataProjectCard.json');
+        const data = await response.json();
+        
+        // Transform the JSON data to match the Project interface
+        const transformedProjects = data.map((item: any) => ({
+          id: item.id,
+          title: item.title,
+          subtitle: item.subtitle,
+          year: "2024", // Default values since not in JSON
+          duration: "30min",
+          rating: "G",
+          genre: "Project",
+          description: Array.isArray(item.description) ? item.description.join(" ") : item.description,
+          image: item.image,
+          category: item.tags.join(", "),
+          featured: item.id === 1
+        }));
+        
+        setProjects(transformedProjects);
+      } catch (error) {
+        console.error('Error loading projects:', error);
+        // Fallback to default project if JSON fails to load
+        setProjects([{
+          id: 1,
+          title: "Advanced Architectural Visualization",
+          subtitle: "Archviz in Unreal Engine 5.5",
+          year: "2024",
+          duration: "30min",
+          rating: "G",
+          genre: "ArchViz",
+          description: "This is a placeholder description",
+          image: "/imgs/archviztello/m12.jpg",
+          category: "ue, archviz",
+          featured: true
+        }]);
+      }
+    };
+    
+    loadProjects();
+  }, []);
 
   const currentProject = projects[currentIndex];
   const nextProjectsList = nextProjects.map(index => projects[index % projects.length]);
