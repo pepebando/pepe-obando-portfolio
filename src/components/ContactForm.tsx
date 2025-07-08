@@ -1,22 +1,16 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    addressLine1: "",
-    addressLine2: "",
-    state: "",
-    country: "",
-    zipCode: "",
+    name: "",
     email: "",
-    password: "",
-    confirmPassword: ""
+    projectType: "",
+    projectDescription: ""
   });
 
   const handleInputChange = (field: string, value: string) => {
@@ -47,14 +41,14 @@ const ContactForm = () => {
           <div className="space-y-6">
             <div className="space-y-4">
               <h2 className="text-card-foreground/90 text-lg font-medium">
-                Don't Miss Your Chance!
+                Let's Work Together!
               </h2>
               <div className="space-y-2">
                 <h1 className="text-4xl font-bold text-nav-item">
-                  Signup Now
+                  Contact Me
                 </h1>
                 <p className="text-card-foreground text-xl">
-                  and <span className="font-bold">Get Rewarded!</span>
+                  Tell me about your <span className="font-bold">Project!</span>
                 </p>
               </div>
             </div>
@@ -75,12 +69,12 @@ const ContactForm = () => {
               </div>
             </div>
 
-            {/* Already have account */}
+            {/* Contact Info */}
             <div className="pt-4">
               <p className="text-card-foreground/70 text-sm">
-                Already have an account?{" "}
+                Ready to bring your ideas to life?{" "}
                 <span className="text-nav-item cursor-pointer hover:underline">
-                  Sign In Here
+                  Let's get started!
                 </span>
               </p>
             </div>
@@ -88,94 +82,15 @@ const ContactForm = () => {
 
           {/* Right Side - Contact Form */}
           <div className="bg-sidebar-bg/60 backdrop-blur-sm rounded-2xl p-8 border border-card-foreground/10">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* First Name & Last Name */}
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Input
-                    placeholder="First Name"
-                    value={formData.firstName}
-                    onChange={(e) => handleInputChange("firstName", e.target.value)}
-                    className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
-                  />
-                </div>
-                <div>
-                  <Input
-                    placeholder="Last Name"
-                    value={formData.lastName}
-                    onChange={(e) => handleInputChange("lastName", e.target.value)}
-                    className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
-                  />
-                </div>
-              </div>
-
-              {/* Phone Number */}
-              <div className="flex gap-2">
-                <Select>
-                  <SelectTrigger className="w-20 bg-container-bg/50 border-card-foreground/20 text-card-foreground">
-                    <SelectValue placeholder="🇺🇸" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="+1">🇺🇸 +1</SelectItem>
-                    <SelectItem value="+44">🇬🇧 +44</SelectItem>
-                    <SelectItem value="+33">🇫🇷 +33</SelectItem>
-                  </SelectContent>
-                </Select>
-                <Input
-                  placeholder="Enter your Phone Number"
-                  value={formData.phone}
-                  onChange={(e) => handleInputChange("phone", e.target.value)}
-                  className="flex-1 bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
-                />
-              </div>
-
-              {/* Address Line 1 & 2 */}
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Input
-                    placeholder="Address Line 1"
-                    value={formData.addressLine1}
-                    onChange={(e) => handleInputChange("addressLine1", e.target.value)}
-                    className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
-                  />
-                </div>
-                <div>
-                  <Input
-                    placeholder="Address Line 2"
-                    value={formData.addressLine2}
-                    onChange={(e) => handleInputChange("addressLine2", e.target.value)}
-                    className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
-                  />
-                </div>
-              </div>
-
-              {/* State & Country */}
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Input
-                    placeholder="State"
-                    value={formData.state}
-                    onChange={(e) => handleInputChange("state", e.target.value)}
-                    className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
-                  />
-                </div>
-                <div>
-                  <Input
-                    placeholder="Country"
-                    value={formData.country}
-                    onChange={(e) => handleInputChange("country", e.target.value)}
-                    className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
-                  />
-                </div>
-              </div>
-
-              {/* Zip Code */}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Name */}
               <div>
                 <Input
-                  placeholder="Zip Code/Postal Code"
-                  value={formData.zipCode}
-                  onChange={(e) => handleInputChange("zipCode", e.target.value)}
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={(e) => handleInputChange("name", e.target.value)}
                   className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
+                  required
                 />
               </div>
 
@@ -183,46 +98,49 @@ const ContactForm = () => {
               <div>
                 <Input
                   type="email"
-                  placeholder="Add your Email address Here"
+                  placeholder="Your Email Address"
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
+                  required
                 />
               </div>
 
-              {/* Password Fields */}
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Input
-                    type="password"
-                    placeholder="Create new password"
-                    value={formData.password}
-                    onChange={(e) => handleInputChange("password", e.target.value)}
-                    className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
-                  />
-                </div>
-                <div>
-                  <Input
-                    type="password"
-                    placeholder="Re-enter password"
-                    value={formData.confirmPassword}
-                    onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
-                    className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50"
-                  />
-                </div>
+              {/* Project Type */}
+              <div>
+                <Select value={formData.projectType} onValueChange={(value) => handleInputChange("projectType", value)}>
+                  <SelectTrigger className="bg-container-bg/50 border-card-foreground/20 text-card-foreground">
+                    <SelectValue placeholder="Select Project Type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="web-development">Web Development</SelectItem>
+                    <SelectItem value="mobile-app">Mobile App</SelectItem>
+                    <SelectItem value="game-development">Game Development</SelectItem>
+                    <SelectItem value="database-design">Database Design</SelectItem>
+                    <SelectItem value="3d-modeling">3D Modeling</SelectItem>
+                    <SelectItem value="consulting">Consulting</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
-              {/* Terms */}
-              <p className="text-xs text-card-foreground/60 text-center">
-                Password must contain Special character, Capital & simple letters and a number.
-              </p>
+              {/* Project Description */}
+              <div>
+                <Textarea
+                  placeholder="Tell me about your project... What are your goals, requirements, and timeline?"
+                  value={formData.projectDescription}
+                  onChange={(e) => handleInputChange("projectDescription", e.target.value)}
+                  className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50 min-h-[120px]"
+                  required
+                />
+              </div>
 
               {/* Submit Button */}
               <Button 
                 type="submit"
                 className="w-full bg-nav-item hover:bg-nav-item/90 text-accent-foreground font-bold py-3 rounded-lg text-lg"
               >
-                LET ME IN! 🚀
+                Send Message 🚀
               </Button>
             </form>
           </div>
