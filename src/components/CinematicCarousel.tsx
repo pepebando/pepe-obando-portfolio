@@ -225,30 +225,6 @@ const CinematicCarousel = () => {
             </Button>
           </div>
 
-          {/* Image Carousel */}
-          <div className="mt-8 max-w-xl">
-            <Carousel opts={{
-            align: "start",
-            loop: true
-          }} className="w-full">
-              <CarouselContent className="-ml-4">
-                {filteredProjects.map((project, index) => <CarouselItem key={project.id} className="pl-4 basis-1/4">
-                    <div className="flex flex-col items-center space-y-3 cursor-pointer transition-all duration-300" onClick={() => setCurrentIndex(index)}>
-                      <div className={`w-32 h-24 bg-cover bg-center rounded-xl transition-all duration-300 border-2 ${index === currentIndex ? 'border-nav-item shadow-xl scale-105' : 'border-transparent hover:border-nav-item/30 hover:scale-102'}`} style={{
-                    backgroundImage: `url(${project.image})`
-                  }} />
-                      <div className="text-center">
-                        <p className="text-card-foreground text-sm font-medium leading-tight max-w-32">
-                          {project.title}
-                        </p>
-                      </div>
-                    </div>
-                  </CarouselItem>)}
-              </CarouselContent>
-              <CarouselPrevious className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10" />
-              <CarouselNext className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10" />
-            </Carousel>
-          </div>
         </div>
 
         {/* Right Sidebar - Categories (positioned to match the red box in design) */}
@@ -260,6 +236,33 @@ const CinematicCarousel = () => {
               </button>)}
           </div>
         </div>
+      </div>
+
+      {/* Bottom Carousel - positioned in the red box area */}
+      <div className="absolute bottom-8 left-8 right-8">
+        <Carousel opts={{
+          align: "start",
+          loop: true
+        }} className="w-full">
+          <CarouselContent className="-ml-4">
+            {filteredProjects.map((project, index) => (
+              <CarouselItem key={project.id} className="pl-4 basis-1/4">
+                <div className="flex flex-col items-center space-y-3 cursor-pointer transition-all duration-300" onClick={() => setCurrentIndex(index)}>
+                  <div className={`w-32 h-24 bg-cover bg-center rounded-xl transition-all duration-300 border-2 ${index === currentIndex ? 'border-nav-item shadow-xl scale-105' : 'border-transparent hover:border-nav-item/30 hover:scale-102'}`} style={{
+                    backgroundImage: `url(${project.image})`
+                  }} />
+                  <div className="text-center">
+                    <p className="text-card-foreground text-sm font-medium leading-tight max-w-32">
+                      {project.title}
+                    </p>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10" />
+          <CarouselNext className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10" />
+        </Carousel>
       </div>
 
     </div>;
