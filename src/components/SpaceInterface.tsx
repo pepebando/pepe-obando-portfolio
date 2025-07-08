@@ -2,42 +2,47 @@ import { useState } from "react";
 import { Menu, Search, User, ChevronDown, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CinematicCarousel from "@/components/CinematicCarousel";
-
 const SpaceInterface = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
   const [activeTab, setActiveTab] = useState("02"); // Set Projects as active by default
 
-  const navigationItems = [
-    { number: "01", label: "Overview", active: activeTab === "01" },
-    { number: "02", label: "Projects", active: activeTab === "02" },
-    { number: "03", label: "Discovery", active: activeTab === "03" },
-  ];
-
-  const rightPanelCards = [
-    {
-      id: "01",
-      title: "Journey to the Unknown",
-      subtitle: "From the Sun and into the farthest reaches of the Solar System",
-      tag: "Jupiter",
-      image: "https://images.unsplash.com/photo-1614728263952-84ea256f9679?w=300&h=200&fit=crop",
-    },
-    {
-      id: "02",
-      title: "Planets from the Sun and into the Deep Space System",
-      subtitle: "Explore distant worlds",
-      tag: "Neptune", 
-      image: "https://images.unsplash.com/photo-1600721391776-b5cd0e0048f9?w=300&h=200&fit=crop",
-    }
-  ];
-
-  const planetNavigation = [
-    { name: "Journey to the Unknown", image: "https://images.unsplash.com/photo-1614728263952-84ea256f9679?w=80&h=80&fit=crop" },
-    { name: "Unleash Your Lunar Adventure", image: "https://images.unsplash.com/photo-1600721391776-b5cd0e0048f9?w=80&h=80&fit=crop" },
-    { name: "Ultimate Guide to Interplanetary Travel", image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=80&h=80&fit=crop" },
-  ];
-
-  return (
-    <div className="min-h-screen bg-background p-8">
+  const navigationItems = [{
+    number: "01",
+    label: "Overview",
+    active: activeTab === "01"
+  }, {
+    number: "02",
+    label: "Projects",
+    active: activeTab === "02"
+  }, {
+    number: "03",
+    label: "Discovery",
+    active: activeTab === "03"
+  }];
+  const rightPanelCards = [{
+    id: "01",
+    title: "Journey to the Unknown",
+    subtitle: "From the Sun and into the farthest reaches of the Solar System",
+    tag: "Jupiter",
+    image: "https://images.unsplash.com/photo-1614728263952-84ea256f9679?w=300&h=200&fit=crop"
+  }, {
+    id: "02",
+    title: "Planets from the Sun and into the Deep Space System",
+    subtitle: "Explore distant worlds",
+    tag: "Neptune",
+    image: "https://images.unsplash.com/photo-1600721391776-b5cd0e0048f9?w=300&h=200&fit=crop"
+  }];
+  const planetNavigation = [{
+    name: "Journey to the Unknown",
+    image: "https://images.unsplash.com/photo-1614728263952-84ea256f9679?w=80&h=80&fit=crop"
+  }, {
+    name: "Unleash Your Lunar Adventure",
+    image: "https://images.unsplash.com/photo-1600721391776-b5cd0e0048f9?w=80&h=80&fit=crop"
+  }, {
+    name: "Ultimate Guide to Interplanetary Travel",
+    image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=80&h=80&fit=crop"
+  }];
+  return <div className="min-h-screen bg-background p-8 px-[33px]">
       {/* Main Container */}
       <div className="max-w-7xl mx-auto h-screen bg-container-bg rounded-3xl overflow-hidden relative">
         
@@ -74,51 +79,30 @@ const SpaceInterface = () => {
           
           {/* Left Sidebar */}
           <div className="col-span-2 bg-sidebar-bg p-6 flex flex-col justify-center space-y-8">
-            {navigationItems.map((item) => (
-              <div 
-                key={item.number}
-                onClick={() => setActiveTab(item.number)}
-                className={`flex flex-col items-center space-y-2 cursor-pointer group transition-all duration-300 ${
-                  item.active ? 'opacity-100' : 'opacity-60 hover:opacity-100'
-                }`}
-              >
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
-                  item.active 
-                    ? 'bg-nav-item-bg border-nav-item text-nav-item' 
-                    : 'border-sidebar-text/30 text-sidebar-text hover:border-nav-item hover:text-nav-item'
-                }`}>
+            {navigationItems.map(item => <div key={item.number} onClick={() => setActiveTab(item.number)} className={`flex flex-col items-center space-y-2 cursor-pointer group transition-all duration-300 ${item.active ? 'opacity-100' : 'opacity-60 hover:opacity-100'}`}>
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${item.active ? 'bg-nav-item-bg border-nav-item text-nav-item' : 'border-sidebar-text/30 text-sidebar-text hover:border-nav-item hover:text-nav-item'}`}>
                   <span className="text-sm font-bold">{item.number}</span>
                 </div>
                 <span className="text-xs text-sidebar-text text-center opacity-70">{item.label}</span>
-              </div>
-            ))}
+              </div>)}
           </div>
 
           {/* Main Content Area */}
           <div className="col-span-10 relative overflow-hidden">
-            {activeTab === "02" ? (
-              /* Cinematic Carousel */
-              <CinematicCarousel />
-            ) : (
-              /* Default Overview Content */
-              <>
+            {activeTab === "02" ? (/* Cinematic Carousel */
+          <CinematicCarousel />) : (/* Default Overview Content */
+          <>
                 {/* Hero Background */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url('https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1200&h=800&fit=crop')`
-                  }}
-                />
+                <div className="absolute inset-0 bg-cover bg-center" style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1200&h=800&fit=crop')`
+            }} />
                 {/* Cosmic overlay */}
                 <div className="absolute inset-0 bg-gradient-cosmic" />
                 
                 {/* Floating astronaut with flowers effect - using the cosmic hero image */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center opacity-90"
-                  style={{
-                    backgroundImage: `url('/src/assets/cosmic-hero.jpg')`
-                  }}
-                />
+                <div className="absolute inset-0 bg-cover bg-center opacity-90" style={{
+              backgroundImage: `url('/src/assets/cosmic-hero.jpg')`
+            }} />
 
                 {/* Bottom Content */}
                 <div className="absolute bottom-8 left-8 right-8">
@@ -150,14 +134,9 @@ const SpaceInterface = () => {
 
                     {/* Right: Planet Navigation */}
                     <div className="col-span-2 space-y-4">
-                      {planetNavigation.map((planet, index) => (
-                        <div key={index} className="flex items-center space-x-3 group cursor-pointer">
+                      {planetNavigation.map((planet, index) => <div key={index} className="flex items-center space-x-3 group cursor-pointer">
                           <div className="w-16 h-16 rounded-full overflow-hidden bg-card">
-                            <img 
-                              src={planet.image} 
-                              alt={planet.name}
-                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                            />
+                            <img src={planet.image} alt={planet.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                           </div>
                           <div className="flex-1">
                             <p className="text-xs text-card-foreground/60 mb-1">{planet.name}</p>
@@ -165,8 +144,7 @@ const SpaceInterface = () => {
                               <ChevronDown className="w-3 h-3 text-accent-foreground" />
                             </div>
                           </div>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
 
                   </div>
@@ -179,15 +157,12 @@ const SpaceInterface = () => {
                     <span className="text-card-foreground/80 text-xs">Enjoy travel with us</span>
                   </div>
                 </div>
-              </>
-            )}
+              </>)}
           </div>
 
 
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default SpaceInterface;

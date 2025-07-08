@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Play, Plus, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-
 interface Project {
   id: number;
   title: string;
@@ -16,7 +15,6 @@ interface Project {
   category: string;
   featured?: boolean;
 }
-
 const CinematicCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [nextProjects, setNextProjects] = useState([1, 2]);
@@ -25,31 +23,47 @@ const CinematicCarousel = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const categories = [
-    { title: 'All', tags: '' },
-    { title: 'Unreal Engine', tags: 'ue' },
-    { title: 'Web', tags: 'web' },
-    { title: 'Videogames', tags: 'games' },
-    { title: 'Mixed Reality', tags: 'mr' },
-    { title: 'Virtual Reality', tags: 'vr' },
-    { title: 'Archviz', tags: 'archviz' },
-    { title: 'Python', tags: 'py' },
-    { title: 'APPs', tags: 'app' }
-  ];
-
+  const categories = [{
+    title: 'All',
+    tags: ''
+  }, {
+    title: 'Unreal Engine',
+    tags: 'ue'
+  }, {
+    title: 'Web',
+    tags: 'web'
+  }, {
+    title: 'Videogames',
+    tags: 'games'
+  }, {
+    title: 'Mixed Reality',
+    tags: 'mr'
+  }, {
+    title: 'Virtual Reality',
+    tags: 'vr'
+  }, {
+    title: 'Archviz',
+    tags: 'archviz'
+  }, {
+    title: 'Python',
+    tags: 'py'
+  }, {
+    title: 'APPs',
+    tags: 'app'
+  }];
   useEffect(() => {
     const loadProjects = async () => {
       try {
         const response = await fetch('/dataProjectCard.json');
         const data = await response.json();
-        
+
         // Transform the JSON data to match the Project interface
         const transformedProjects = data.map((item: any) => ({
           id: item.id,
           title: item.title,
           subtitle: item.subtitle,
-          year: "2024", // Default values since not in JSON
+          year: "2024",
+          // Default values since not in JSON
           duration: "30min",
           rating: "G",
           genre: "Project",
@@ -58,7 +72,6 @@ const CinematicCarousel = () => {
           category: item.tags.join(", "),
           featured: item.id === 1
         }));
-        
         setProjects(transformedProjects);
       } catch (error) {
         console.error('Error loading projects:', error);
@@ -80,7 +93,6 @@ const CinematicCarousel = () => {
         setIsLoading(false);
       }
     };
-    
     loadProjects();
   }, []);
 
@@ -89,39 +101,30 @@ const CinematicCarousel = () => {
     if (selectedCategory === '') {
       setFilteredProjects(projects);
     } else {
-      const filtered = projects.filter(project => 
-        project.category.includes(selectedCategory)
-      );
+      const filtered = projects.filter(project => project.category.includes(selectedCategory));
       setFilteredProjects(filtered);
     }
     setCurrentIndex(0); // Reset to first project when filtering
   }, [selectedCategory, projects]);
-
   const currentProject = filteredProjects[currentIndex] || projects[0];
   const nextProjectsList = nextProjects.map(index => filteredProjects[index % filteredProjects.length]);
 
   // Show loading state while projects are being fetched
   if (isLoading || !currentProject) {
-    return (
-      <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-container-bg via-container-bg to-black flex items-center justify-center">
+    return <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-container-bg via-container-bg to-black flex items-center justify-center">
         <div className="text-card-foreground">Loading...</div>
-      </div>
-    );
+      </div>;
   }
-
-
   if (showGallery) {
-    return (
-      <div className="relative w-full h-full overflow-hidden bg-container-bg">
+    return <div className="relative w-full h-full overflow-hidden bg-container-bg">
         {/* Main Content Grid */}
         <div className="h-full flex">
           {/* Left Side - Full Screen Video Player */}
           <div className="flex-1 relative">
             {/* Background Image */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${currentProject.image})` }}
-            />
+            <div className="absolute inset-0 bg-cover bg-center" style={{
+            backgroundImage: `url(${currentProject.image})`
+          }} />
             <div className="absolute inset-0 bg-black/40" />
             
             {/* Video Player Controls */}
@@ -150,28 +153,19 @@ const CinematicCarousel = () => {
             </div>
 
             {/* Close Button */}
-            <Button 
-              onClick={() => setShowGallery(false)}
-              variant="ghost" 
-              size="sm" 
-              className="absolute top-6 right-6 text-white hover:bg-white/20"
-            >
+            <Button onClick={() => setShowGallery(false)} variant="ghost" size="sm" className="absolute top-6 right-6 text-white hover:bg-white/20">
               <Plus className="w-5 h-5 rotate-45" />
             </Button>
           </div>
 
         </div>
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-container-bg via-container-bg to-black">
+  return <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-container-bg via-container-bg to-black">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-30"
-        style={{ backgroundImage: `url(${currentProject.image})` }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{
+      backgroundImage: `url(${currentProject.image})`
+    }} />
       <div className="absolute inset-0 bg-gradient-to-r from-container-bg/90 via-container-bg/60 to-transparent" />
 
       {/* Main Content Container */}
@@ -193,16 +187,12 @@ const CinematicCarousel = () => {
           {/* Main Title */}
           <div className="space-y-4">
             <h1 className="text-7xl font-black text-card-foreground leading-none tracking-tighter">
-              {currentProject.title.split(" ").map((word, index) => (
-                <div key={index} className="block">
+              {currentProject.title.split(" ").map((word, index) => <div key={index} className="block">
                   {word}
-                  {index === 0 && (
-                    <span className="text-nav-item text-8xl ml-2">
+                  {index === 0 && <span className="text-nav-item text-8xl ml-2">
                       {currentProject.id}
-                    </span>
-                  )}
-                </div>
-              ))}
+                    </span>}
+                </div>)}
             </h1>
           </div>
 
@@ -226,10 +216,7 @@ const CinematicCarousel = () => {
 
           {/* Action Buttons */}
           <div className="flex items-center space-x-4">
-            <Button 
-              onClick={() => setShowGallery(true)}
-              className="bg-nav-item hover:bg-nav-item/90 text-accent-foreground rounded-lg px-8 py-3 font-bold"
-            >
+            <Button onClick={() => setShowGallery(true)} className="bg-nav-item hover:bg-nav-item/90 text-accent-foreground rounded-lg px-8 py-3 font-bold">
               <Play className="w-5 h-5 mr-2" />
               PLAY
             </Button>
@@ -240,36 +227,23 @@ const CinematicCarousel = () => {
 
           {/* Image Carousel */}
           <div className="mt-8 max-w-xl">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-            >
+            <Carousel opts={{
+            align: "start",
+            loop: true
+          }} className="w-full">
               <CarouselContent className="-ml-4">
-                {filteredProjects.map((project, index) => (
-                  <CarouselItem key={project.id} className="pl-4 basis-1/4">
-                    <div
-                      className="flex flex-col items-center space-y-3 cursor-pointer transition-all duration-300"
-                      onClick={() => setCurrentIndex(index)}
-                    >
-                      <div
-                        className={`w-32 h-24 bg-cover bg-center rounded-xl transition-all duration-300 border-2 ${
-                          index === currentIndex 
-                            ? 'border-nav-item shadow-xl scale-105' 
-                            : 'border-transparent hover:border-nav-item/30 hover:scale-102'
-                        }`}
-                        style={{ backgroundImage: `url(${project.image})` }}
-                      />
+                {filteredProjects.map((project, index) => <CarouselItem key={project.id} className="pl-4 basis-1/4">
+                    <div className="flex flex-col items-center space-y-3 cursor-pointer transition-all duration-300" onClick={() => setCurrentIndex(index)}>
+                      <div className={`w-32 h-24 bg-cover bg-center rounded-xl transition-all duration-300 border-2 ${index === currentIndex ? 'border-nav-item shadow-xl scale-105' : 'border-transparent hover:border-nav-item/30 hover:scale-102'}`} style={{
+                    backgroundImage: `url(${project.image})`
+                  }} />
                       <div className="text-center">
                         <p className="text-card-foreground text-sm font-medium leading-tight max-w-32">
                           {project.title}
                         </p>
                       </div>
                     </div>
-                  </CarouselItem>
-                ))}
+                  </CarouselItem>)}
               </CarouselContent>
               <CarouselPrevious className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10" />
               <CarouselNext className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10" />
@@ -278,28 +252,16 @@ const CinematicCarousel = () => {
         </div>
 
         {/* Right Sidebar - Categories (positioned to match the red box in design) */}
-        <div className="absolute top-8 right-8 w-64 bg-container-bg/80 backdrop-blur-sm rounded-lg p-6 border border-card-foreground/10">
+        <div className="absolute top-8 right-8 w-64 bg-container-bg/80 backdrop-blur-sm rounded-lg p-6 border border-card-foreground/10 py-[24px] my-[39px]">
           <h3 className="text-card-foreground font-bold text-lg mb-4">Categories</h3>
           <div className="space-y-2">
-            {categories.map((category) => (
-              <button
-                key={category.tags}
-                onClick={() => setSelectedCategory(category.tags)}
-                className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${
-                  selectedCategory === category.tags
-                    ? 'text-nav-item bg-nav-item/20 border border-nav-item/30'
-                    : 'text-card-foreground/70 hover:text-card-foreground hover:bg-card-foreground/5'
-                }`}
-              >
+            {categories.map(category => <button key={category.tags} onClick={() => setSelectedCategory(category.tags)} className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${selectedCategory === category.tags ? 'text-nav-item bg-nav-item/20 border border-nav-item/30' : 'text-card-foreground/70 hover:text-card-foreground hover:bg-card-foreground/5'}`}>
                 {category.title}
-              </button>
-            ))}
+              </button>)}
           </div>
         </div>
       </div>
 
-    </div>
-  );
+    </div>;
 };
-
 export default CinematicCarousel;
