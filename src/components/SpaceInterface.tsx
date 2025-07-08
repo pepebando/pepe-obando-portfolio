@@ -99,7 +99,7 @@ const SpaceInterface = () => {
         <div className="grid grid-cols-12 h-full">
           
           {/* Left Sidebar */}
-          <div className="col-span-2 bg-sidebar-bg p-6 flex flex-col justify-center space-y-8">
+          <div className="col-span-12 md:col-span-2 bg-sidebar-bg p-3 md:p-6 flex md:flex-col justify-center md:space-y-8 space-x-4 md:space-x-0 order-2 md:order-1">
             {navigationItems.map(item => <div key={item.number} onClick={() => setActiveTab(item.number)} className={`flex flex-col items-center space-y-2 cursor-pointer group transition-all duration-300 ${item.active ? 'opacity-100' : 'opacity-60 hover:opacity-100'}`}>
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${item.active ? 'bg-nav-item-bg border-nav-item text-nav-item' : 'border-sidebar-text/30 text-sidebar-text hover:border-nav-item hover:text-nav-item'}`}>
                   <span className="text-sm font-bold">{item.number}</span>
@@ -109,7 +109,7 @@ const SpaceInterface = () => {
           </div>
 
           {/* Main Content Area */}
-          <div className="col-span-10 relative overflow-hidden">
+          <div className="col-span-12 md:col-span-10 relative overflow-hidden order-1 md:order-2">
             {activeTab === "02" ? (/* Cinematic Carousel */
           <CinematicCarousel />) : activeTab === "03" ? (/* Contact Form */
           <ContactForm />) : (/* Default Overview Content */
@@ -122,20 +122,20 @@ const SpaceInterface = () => {
                 <div className="absolute inset-0 bg-gradient-cosmic" />
 
                 {/* Main Description Section */}
-                <div className="absolute top-1/2 left-8 right-8 transform -translate-y-1/2 z-20">
-                  <div className="text-center bg-[#000a0e]/55 rounded-2xl">
+                <div className="absolute top-1/2 left-4 md:left-8 right-4 md:right-8 transform -translate-y-1/2 z-20">
+                  <div className="text-center bg-[#000a0e]/55 rounded-2xl p-4 md:p-6">
                     <div className="space-y-4">
-                      <h1 className="text-4xl font-bold text-card-foreground leading-tight">
+                      <h1 className="text-2xl md:text-4xl font-bold text-card-foreground leading-tight">
                         Pepe Obando
                       </h1>
-                      <p className="text-card-foreground/80 text-sm leading-relaxed max-w-4xl mx-auto">
+                      <p className="text-card-foreground/80 text-xs md:text-sm leading-relaxed max-w-4xl mx-auto">
                         Hey there! I'm a versatile software developer with a strong background in full-stack development, game design, and database management. Passionate about crafting efficient and scalable solutions, I specialize in web development, backend systems, and interactive experiences using modern programming technologies.
-                        <br /><br />
-                        With experience in JavaScript, Python, C++, C#, PHP, and SQL, I have built dynamic applications, optimized databases, and developed immersive projects in Unreal Engine. My expertise extends to server-side programming with Node.js and MySQL, ensuring seamless integration and performance across different platforms.
+                        <br className="hidden md:block" /><br className="hidden md:block" />
+                        <span className="hidden md:inline">With experience in JavaScript, Python, C++, C#, PHP, and SQL, I have built dynamic applications, optimized databases, and developed immersive projects in Unreal Engine. My expertise extends to server-side programming with Node.js and MySQL, ensuring seamless integration and performance across different platforms.
                         <br /><br />
                         I enjoy solving complex problems, automating workflows, and constantly learning new technologies to stay ahead in the ever-evolving tech landscape. Whether it's building robust web applications, designing efficient databases, or developing interactive 3D experiences, I'm always eager to take on new challenges.
                         <br /><br />
-                        Feel free to reach out—I'm always open to new projects and collaborations!
+                        Feel free to reach out—I'm always open to new projects and collaborations!</span>
                       </p>
                     </div>
                     
@@ -148,13 +148,13 @@ const SpaceInterface = () => {
                     
                     {/* Technical Skills */}
                     <div className="mt-8">
-                      <h2 className="text-2xl font-bold text-card-foreground mb-6 text-center">Technical Skills</h2>
-                      <div className="grid grid-cols-7 gap-4">
+                      <h2 className="text-xl md:text-2xl font-bold text-card-foreground mb-6 text-center">Technical Skills</h2>
+                      <div className="grid grid-cols-3 md:grid-cols-7 gap-2 md:gap-4">
                         {skills.map((skill, index) => <div key={index} className="flex flex-col items-center space-y-2 group cursor-pointer">
-                            <div className="w-12 h-12 bg-card/80 rounded-lg p-2 group-hover:bg-nav-item/20 transition-colors duration-300 flex items-center justify-center">
-                              <img src={skill.image} alt={skill.title} className="w-8 h-8 object-contain" />
+                            <div className="w-8 md:w-12 h-8 md:h-12 bg-card/80 rounded-lg p-1 md:p-2 group-hover:bg-nav-item/20 transition-colors duration-300 flex items-center justify-center">
+                              <img src={skill.image} alt={skill.title} className="w-6 md:w-8 h-6 md:h-8 object-contain" />
                             </div>
-                            <span className="text-xs text-card-foreground/80 text-center group-hover:text-nav-item transition-colors duration-300">
+                            <span className="text-[10px] md:text-xs text-card-foreground/80 text-center group-hover:text-nav-item transition-colors duration-300">
                               {skill.title}
                             </span>
                           </div>)}
@@ -171,10 +171,10 @@ const SpaceInterface = () => {
                 </div>
 
                 {/* Top right stats */}
-                <div className="absolute top-24 right-8 z-40">
-                  <div className="bg-nav-item/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2">
-                    <span className="text-nav-item font-bold">+5</span>
-                    <span className="text-card-foreground/80 text-xs">Years Experience</span>
+                <div className="absolute top-4 md:top-24 right-4 md:right-8 z-40">
+                  <div className="bg-nav-item/20 backdrop-blur-sm rounded-full px-3 md:px-4 py-1 md:py-2 flex items-center space-x-2">
+                    <span className="text-nav-item font-bold text-sm md:text-base">+5</span>
+                    <span className="text-card-foreground/80 text-[10px] md:text-xs">Years Experience</span>
                   </div>
                 </div>
               </>)}

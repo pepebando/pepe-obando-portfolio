@@ -206,9 +206,9 @@ const CinematicCarousel = () => {
       <div className="relative z-10 h-full p-8 flex">
         
         {/* Left Content */}
-        <div className="flex-1 flex flex-col justify-center space-y-0 max-w-2xl">
+        <div className="flex-1 flex flex-col justify-center space-y-0 max-w-2xl px-4 md:px-0">
           {/* Category Badge */}
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4">
             <span className="bg-nav-item text-accent-foreground text-xs px-3 py-1 rounded font-bold tracking-wider">
               {currentProject.subtitle}
             </span>
@@ -219,17 +219,17 @@ const CinematicCarousel = () => {
           </div>
 
           {/* Main Title */}
-          <div className="space-y-4">
-            <h1 className="text-5xl font-black text-card-foreground leading-none tracking-tighter">
-              {currentProject.title.split(" ").map((word, index) => <div key={index} className="inline-block mx-[3px] py-[14px]">
+          <div className="space-y-4 mt-4">
+            <h1 className="text-3xl md:text-5xl font-black text-card-foreground leading-none tracking-tighter">
+              {currentProject.title.split(" ").map((word, index) => <div key={index} className="inline-block mx-[2px] md:mx-[3px] py-[8px] md:py-[14px]">
                   {word}
                 </div>)}
             </h1>
           </div>
 
           {/* Project Info */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-6 text-card-foreground/80">
+          <div className="space-y-4 mt-4">
+            <div className="flex flex-wrap items-center gap-2 md:gap-6 text-card-foreground/80">
               <span className="bg-nav-item text-accent-foreground text-xs px-2 py-1 rounded">
                 {currentProject.year}
               </span>
@@ -246,20 +246,20 @@ const CinematicCarousel = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center space-x-4">
-            <Button onClick={() => setShowGallery(true)} className="bg-nav-item hover:bg-nav-item/90 text-accent-foreground rounded-lg px-8 font-bold text-base py-[15px] my-[15px]">
-              <Play className="w-5 h-5 mr-2" />
+          <div className="flex items-center space-x-4 mt-4">
+            <Button onClick={() => setShowGallery(true)} className="bg-nav-item hover:bg-nav-item/90 text-accent-foreground rounded-lg px-6 md:px-8 font-bold text-sm md:text-base py-[12px] md:py-[15px] my-[15px]">
+              <Play className="w-4 md:w-5 h-4 md:h-5 mr-2" />
               PLAY
             </Button>
           </div>
 
         </div>
 
-        {/* Right Sidebar - Categories (positioned to match the red box in design) */}
-        <div className="absolute top-8 right-8 w-64 bg-container-bg/80 backdrop-blur-sm rounded-lg p-6 border border-card-foreground/10 my-[39px] py-[2px]">
-          <h3 className="text-card-foreground font-bold text-lg mb-4">Categories</h3>
+        {/* Right Sidebar - Categories (repositioned for mobile) */}
+        <div className="absolute top-8 right-4 md:right-8 w-48 md:w-64 bg-container-bg/80 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-card-foreground/10 max-h-[60vh] md:max-h-none overflow-y-auto">
+          <h3 className="text-card-foreground font-bold text-base md:text-lg mb-4">Categories</h3>
           <div className="space-y-2">
-            {categories.map(category => <button key={category.tags} onClick={() => setSelectedCategory(category.tags)} className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${selectedCategory === category.tags ? 'text-nav-item bg-nav-item/20 border border-nav-item/30' : 'text-card-foreground/70 hover:text-card-foreground hover:bg-card-foreground/5'}`}>
+            {categories.map(category => <button key={category.tags} onClick={() => setSelectedCategory(category.tags)} className={`w-full text-left px-3 md:px-4 py-2 md:py-3 rounded-lg transition-all duration-300 text-sm ${selectedCategory === category.tags ? 'text-nav-item bg-nav-item/20 border border-nav-item/30' : 'text-card-foreground/70 hover:text-card-foreground hover:bg-card-foreground/5'}`}>
                 {category.title}
               </button>)}
           </div>
@@ -267,27 +267,27 @@ const CinematicCarousel = () => {
       </div>
 
       {/* Bottom Carousel - positioned in the red box area */}
-      <div className="absolute bottom-8 left-8 right-8 z-20">
+      <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 right-4 md:right-8 z-20">
         <Carousel opts={{
         align: "start",
         loop: true
       }} className="w-full">
-          <CarouselContent className="-ml-4">
-            {filteredProjects.map((project, index) => <CarouselItem key={project.id} className="pl-4 basis-1/6 py-5 px-[9px] mx-[15px]">
-                <div className="flex flex-col items-center space-y-3 cursor-pointer transition-all duration-300 relative z-10" onClick={() => setCurrentIndex(index)}>
-                  <div className={`w-32 h-24 bg-cover bg-center rounded-xl transition-all duration-300 border-2 ${index === currentIndex ? 'border-nav-item shadow-xl scale-105' : 'border-transparent hover:border-nav-item/30 hover:scale-102'}`} style={{
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {filteredProjects.map((project, index) => <CarouselItem key={project.id} className="pl-2 md:pl-4 basis-1/3 md:basis-1/6 py-2 md:py-5 px-[4px] md:px-[9px] mx-[8px] md:mx-[15px]">
+                <div className="flex flex-col items-center space-y-2 md:space-y-3 cursor-pointer transition-all duration-300 relative z-10" onClick={() => setCurrentIndex(index)}>
+                  <div className={`w-20 md:w-32 h-16 md:h-24 bg-cover bg-center rounded-lg md:rounded-xl transition-all duration-300 border-2 ${index === currentIndex ? 'border-nav-item shadow-xl scale-105' : 'border-transparent hover:border-nav-item/30 hover:scale-102'}`} style={{
                 backgroundImage: `url(${project.image})`
               }} />
                   <div className="text-center">
-                    <p className="text-card-foreground text-sm font-medium leading-tight max-w-32">
+                    <p className="text-card-foreground text-xs md:text-sm font-medium leading-tight max-w-20 md:max-w-32">
                       {project.title}
                     </p>
                   </div>
                 </div>
               </CarouselItem>)}
           </CarouselContent>
-          <CarouselPrevious className="text-nav-item border-nav-item/30 hover:bg-nav-item/20 bg-container-bg/80 backdrop-blur-sm z-10 -left-4 top-1/2 -translate-y-1/2" />
-          <CarouselNext className="text-nav-item border-nav-item/30 hover:bg-nav-item/20 bg-container-bg/80 backdrop-blur-sm z-10 -right-4 top-1/2 -translate-y-1/2" />
+          <CarouselPrevious className="text-nav-item border-nav-item/30 hover:bg-nav-item/20 bg-container-bg/80 backdrop-blur-sm z-10 -left-2 md:-left-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10" />
+          <CarouselNext className="text-nav-item border-nav-item/30 hover:bg-nav-item/20 bg-container-bg/80 backdrop-blur-sm z-10 -right-2 md:-right-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10" />
         </Carousel>
       </div>
 

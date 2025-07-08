@@ -29,20 +29,20 @@ const ContactForm = () => {
         <div className="absolute top-1/2 left-1/4 w-32 h-32 border border-nav-item/25 -rotate-12"></div>
       </div>
 
-      <div className="relative z-10 h-full flex items-center justify-center p-8">
-        <div className="max-w-6xl w-full grid grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 h-full flex items-center justify-center p-4 md:p-8">
+        <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           
           {/* Left Side - Marketing Content */}
-          <div className="space-y-6">
+          <div className="space-y-6 text-center lg:text-left">
             <div className="space-y-4">
-              <h2 className="text-card-foreground/90 text-lg font-medium">
+              <h2 className="text-card-foreground/90 text-base md:text-lg font-medium">
                 Let's Work Together!
               </h2>
               <div className="space-y-2">
-                <h1 className="text-4xl font-bold text-nav-item">
+                <h1 className="text-3xl md:text-4xl font-bold text-nav-item">
                   Contact Me
                 </h1>
-                <p className="text-card-foreground text-xl">
+                <p className="text-card-foreground text-lg md:text-xl">
                   Tell me about your <span className="font-bold">Project!</span>
                 </p>
               </div>
@@ -58,22 +58,22 @@ const ContactForm = () => {
           </div>
 
           {/* Right Side - Contact Form */}
-          <div className="bg-sidebar-bg/60 backdrop-blur-sm rounded-2xl p-8 border border-card-foreground/10">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="bg-sidebar-bg/60 backdrop-blur-sm rounded-2xl p-4 md:p-8 border border-card-foreground/10 w-full">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
               {/* Name */}
               <div>
-                <Input placeholder="Your Name" value={formData.name} onChange={e => handleInputChange("name", e.target.value)} className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50" required />
+                <Input placeholder="Your Name" value={formData.name} onChange={e => handleInputChange("name", e.target.value)} className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50 h-10 md:h-12" required />
               </div>
 
               {/* Email */}
               <div>
-                <Input type="email" placeholder="Your Email Address" value={formData.email} onChange={e => handleInputChange("email", e.target.value)} className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50" required />
+                <Input type="email" placeholder="Your Email Address" value={formData.email} onChange={e => handleInputChange("email", e.target.value)} className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50 h-10 md:h-12" required />
               </div>
 
               {/* Project Type */}
               <div>
                 <Select value={formData.projectType} onValueChange={value => handleInputChange("projectType", value)}>
-                  <SelectTrigger className="bg-container-bg/50 border-card-foreground/20 text-card-foreground">
+                  <SelectTrigger className="bg-container-bg/50 border-card-foreground/20 text-card-foreground h-10 md:h-12">
                     <SelectValue placeholder="Select Project Type" />
                   </SelectTrigger>
                   <SelectContent className="bg-container-bg border-card-foreground/20 text-card-foreground">
@@ -90,11 +90,11 @@ const ContactForm = () => {
 
               {/* Project Description */}
               <div>
-                <Textarea placeholder="Tell me about your project... What are your goals, requirements, and timeline?" value={formData.projectDescription} onChange={e => handleInputChange("projectDescription", e.target.value)} className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50 min-h-[120px]" required />
+                <Textarea placeholder="Tell me about your project... What are your goals, requirements, and timeline?" value={formData.projectDescription} onChange={e => handleInputChange("projectDescription", e.target.value)} className="bg-container-bg/50 border-card-foreground/20 text-card-foreground placeholder:text-card-foreground/50 min-h-[100px] md:min-h-[120px]" required />
               </div>
 
               {/* Submit Button */}
-              <Button type="submit" className="w-full bg-nav-item hover:bg-nav-item/90 text-accent-foreground font-bold py-3 rounded-lg text-lg">
+              <Button type="submit" className="w-full bg-nav-item hover:bg-nav-item/90 text-accent-foreground font-bold py-2 md:py-3 rounded-lg text-base md:text-lg">
                 Send Message 🚀
               </Button>
             </form>
