@@ -257,7 +257,7 @@ const CinematicCarousel = () => {
         </div>
 
         {/* Right Sidebar - Categories */}
-        <div className="w-64 flex flex-col justify-center space-y-4 pr-8">
+        <div className="w-64 flex flex-col justify-center items-end space-y-4 pr-8">
           <h3 className="text-card-foreground font-bold text-lg mb-4">Categories</h3>
           <div className="space-y-2">
             {categories.map((category) => (
