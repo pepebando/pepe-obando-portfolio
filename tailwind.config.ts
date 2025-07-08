@@ -26,16 +26,11 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))',
-					glow: 'hsl(var(--primary-glow))'
+					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
-				},
-				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
 				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
@@ -45,48 +40,28 @@ export default {
 					DEFAULT: 'hsl(var(--accent))',
 					foreground: 'hsl(var(--accent-foreground))'
 				},
-				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
-				},
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
-					glass: 'hsl(var(--glass-card))'
+					hover: 'hsl(var(--card-hover))'
 				},
-				titlep1: 'hsl(var(--titlep1))',
-				titlep2: 'hsl(var(--titlep2))',
-				titlep3: 'hsl(var(--titlep3))',
-				titlep4: 'hsl(var(--titlep4))',
-				titlep5: 'hsl(var(--titlep5))',
-				titlep6: 'hsl(var(--titlep6))',
+				container: {
+					bg: 'hsl(var(--container-bg))',
+					border: 'hsl(var(--container-border))'
+				},
 				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+					bg: 'hsl(var(--sidebar-bg))',
+					item: 'hsl(var(--sidebar-item))',
+					text: 'hsl(var(--sidebar-text))'
+				},
+				'nav-item': 'hsl(var(--nav-item))',
+				'nav-item-bg': 'hsl(var(--nav-item-bg))',
+				'glass-overlay': 'hsl(var(--glass-overlay))'
 			},
 			backgroundImage: {
-				'gradient-cosmic': 'var(--gradient-cosmic)',
-				'gradient-aurora': 'var(--gradient-aurora)',
-				'gradient-nebula': 'var(--gradient-nebula)',
-				'gradient-space': 'var(--gradient-space)',
-				'gradient-glass': 'var(--gradient-glass)'
-			},
-			boxShadow: {
-				'cosmic': 'var(--shadow-cosmic)',
-				'glass': 'var(--shadow-glass)',
-				'glow-primary': 'var(--glow-primary)',
-				'glow-accent': 'var(--glow-accent)'
-			},
-			transitionTimingFunction: {
-				'smooth': 'var(--transition-smooth)',
-				'bounce': 'var(--transition-bounce)'
+				'gradient-main': 'var(--gradient-main)',
+				'gradient-card': 'var(--gradient-card)',
+				'gradient-cosmic': 'var(--gradient-cosmic)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
