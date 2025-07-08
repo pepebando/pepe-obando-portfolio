@@ -189,7 +189,7 @@ const CinematicCarousel = () => {
             <h1 className="text-7xl font-black text-card-foreground leading-none tracking-tighter">
               {currentProject.title.split(" ").map((word, index) => <div key={index} className="block">
                   {word}
-                  {index === 0 && <span className="text-nav-item text-8xl ml-2">
+                  {index === 0 && <span className="text-nav-item text-6xl ml-2">
                       {currentProject.id}
                     </span>}
                 </div>)}
