@@ -123,8 +123,34 @@ const SpaceInterface = () => {
                 {/* Cosmic overlay */}
                 <div className="absolute inset-0 bg-gradient-cosmic" />
 
-                {/* Skills Section */}
+                {/* Main Description Section */}
                 <div className="absolute top-1/2 left-8 right-8 transform -translate-y-1/2 z-20">
+                  <div className="bg-sidebar-bg/80 backdrop-blur-sm rounded-2xl p-6 border border-card-foreground/10 text-center">
+                    <div className="space-y-4">
+                      <h1 className="text-4xl font-bold text-card-foreground leading-tight">
+                        Bridging the Gap Between Earth and Space
+                      </h1>
+                      <p className="text-card-foreground/80 text-sm leading-relaxed max-w-md mx-auto">
+                        A different approach needed to space tourism, including prehistoric, 
+                        exhibitions, and galleries.
+                      </p>
+                    </div>
+                    
+                    <Button className="bg-nav-item text-accent-foreground hover:bg-nav-item/90 rounded-full px-6 py-2 mt-6">
+                      Discover More
+                    </Button>
+                    
+                    {/* Social Icons */}
+                    <div className="flex justify-center space-x-4 pt-4">
+                      <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
+                      <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
+                      <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Content - Technical Skills */}
+                <div className="absolute bottom-8 left-8 right-8">
                   <div className="bg-sidebar-bg/80 backdrop-blur-sm rounded-2xl p-6 border border-card-foreground/10">
                     <h2 className="text-2xl font-bold text-card-foreground mb-6 text-center">Technical Skills</h2>
                     <div className="grid grid-cols-7 gap-4">
@@ -143,37 +169,6 @@ const SpaceInterface = () => {
                         </div>
                       ))}
                     </div>
-                  </div>
-                </div>
-
-                {/* Bottom Content */}
-                <div className="absolute bottom-8 left-8 right-8">
-                  <div className="grid grid-cols-5 gap-6 items-end">
-                    
-                    {/* Left: Main Description */}
-                    <div className="col-span-5 space-y-6">
-                      <div className="space-y-4">
-                        <h1 className="text-4xl font-bold text-card-foreground leading-tight">
-                          Bridging the Gap Between Earth and Space
-                        </h1>
-                        <p className="text-card-foreground/80 text-sm leading-relaxed max-w-md">
-                          A different approach needed to space tourism, including prehistoric, 
-                          exhibitions, and galleries.
-                        </p>
-                      </div>
-                      
-                      <Button className="bg-nav-item text-accent-foreground hover:bg-nav-item/90 rounded-full px-6 py-2">
-                        Discover More
-                      </Button>
-                      
-                      {/* Social Icons */}
-                      <div className="flex space-x-4 pt-4">
-                        <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
-                        <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
-                        <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
-                      </div>
-                    </div>
-
                   </div>
                 </div>
 
