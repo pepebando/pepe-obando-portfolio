@@ -172,7 +172,7 @@ const CinematicCarousel = () => {
       <div className="relative z-10 h-full p-8 flex">
         
         {/* Left Content */}
-        <div className="flex-1 flex flex-col justify-center space-y-0 max-w-3xl">
+        <div className="flex-1 flex flex-col justify-center space-y-0 max-w-2xl">
           {/* Category Badge */}
           <div className="flex items-center space-x-4">
             <span className="bg-nav-item text-accent-foreground text-xs px-3 py-1 rounded font-bold tracking-wider">
