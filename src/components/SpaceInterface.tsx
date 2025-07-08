@@ -168,10 +168,10 @@ const SpaceInterface = () => {
                 </div>
 
                 {/* Top right stats */}
-                <div className="absolute top-24 right-8">
+                <div className="absolute top-24 right-8 z-40">
                   <div className="bg-nav-item/20 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2">
-                    <span className="text-nav-item font-bold">+48K</span>
-                    <span className="text-card-foreground/80 text-xs">Enjoy travel with us</span>
+                    <span className="text-nav-item font-bold">+5</span>
+                    <span className="text-card-foreground/80 text-xs">Years Experience</span>
                   </div>
                 </div>
               </>)}
