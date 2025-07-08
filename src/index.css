@@ -2,41 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Space-themed portfolio design system with cosmic colors and gradients */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base colors - Deep space theme */
+    --background: 220 20% 8%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Cards and surfaces */
+    --card: 220 25% 12%;
+    --card-foreground: 210 40% 98%;
+    --glass-card: 220 25% 12% / 0.8;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 25% 12%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Cosmic blue */
+    --primary: 240 100% 70%;
+    --primary-foreground: 220 20% 8%;
+    --primary-glow: 240 100% 85%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Aurora purple */
+    --secondary: 280 80% 60%;
+    --secondary-foreground: 220 20% 8%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent - Nebula orange */
+    --accent: 35 100% 65%;
+    --accent-foreground: 220 20% 8%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Muted tones */
+    --muted: 220 15% 20%;
+    --muted-foreground: 215 20% 65%;
 
+    /* Destructive */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs */
+    --border: 220 20% 25%;
+    --input: 220 20% 25%;
+    --ring: 240 100% 70%;
 
-    --radius: 0.5rem;
+    /* Project title colors */
+    --titlep1: 240 100% 70%;
+    --titlep2: 280 80% 60%;
+    --titlep3: 35 100% 65%;
+    --titlep4: 340 80% 65%;
+    --titlep5: 180 80% 60%;
+    --titlep6: 120 80% 60%;
+
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(240 100% 70%), hsl(280 80% 60%));
+    --gradient-aurora: linear-gradient(135deg, hsl(280 80% 60%), hsl(340 80% 65%));
+    --gradient-nebula: linear-gradient(135deg, hsl(35 100% 65%), hsl(20 100% 60%));
+    --gradient-space: linear-gradient(180deg, hsl(220 20% 8%), hsl(220 25% 12%));
+    --gradient-glass: linear-gradient(135deg, 
+      hsl(220 25% 12% / 0.9), 
+      hsl(240 100% 70% / 0.1));
+
+    /* Shadows and glows */
+    --shadow-cosmic: 0 20px 60px -10px hsl(240 100% 70% / 0.3);
+    --shadow-glass: 0 8px 32px 0 hsl(0 0% 0% / 0.4);
+    --glow-primary: 0 0 30px hsl(240 100% 70% / 0.5);
+    --glow-accent: 0 0 30px hsl(35 100% 65% / 0.4);
+
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1.5rem;
 
     --sidebar-background: 0 0% 98%;
 
