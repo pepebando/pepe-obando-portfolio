@@ -95,7 +95,7 @@ const SpaceInterface = () => {
           </div>
 
           {/* Main Content Area */}
-          <div className="col-span-7 relative overflow-hidden">
+          <div className="col-span-10 relative overflow-hidden">
             {activeTab === "02" ? (
               /* Project Viewer 3D */
               <ProjectViewer3D />
@@ -183,59 +183,6 @@ const SpaceInterface = () => {
             )}
           </div>
 
-          {/* Right Sidebar */}
-          <div className="col-span-3 p-6 space-y-4 overflow-y-auto">
-            <div className="space-y-4">
-              {rightPanelCards.map((card) => (
-                <div 
-                  key={card.id}
-                  className="bg-gradient-card rounded-2xl overflow-hidden hover:bg-card-hover transition-all duration-300 cursor-pointer"
-                >
-                  <div className="relative h-32">
-                    <img 
-                      src={card.image} 
-                      alt={card.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-nav-item text-accent-foreground text-xs px-2 py-1 rounded-full">
-                        {card.tag}
-                      </span>
-                    </div>
-                    <div className="absolute top-3 right-3">
-                      <div className="w-8 h-8 bg-card-foreground/20 rounded-full flex items-center justify-center">
-                        <span className="text-card-foreground text-xs font-bold">{card.id}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-4 space-y-2">
-                    <h3 className="text-card-foreground font-semibold text-sm leading-tight">
-                      {card.title}
-                    </h3>
-                    <p className="text-card-foreground/70 text-xs leading-relaxed">
-                      {card.subtitle}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Avatar panels */}
-            <div className="space-y-3 pt-4">
-              <div className="bg-gradient-card rounded-xl p-3 flex items-center space-x-3">
-                <div className="w-10 h-10 bg-nav-item rounded-full" />
-                <div>
-                  <p className="text-card-foreground text-xs font-medium">Withstand</p>
-                </div>
-              </div>
-              <div className="bg-gradient-card rounded-xl p-3 flex items-center space-x-3">
-                <div className="w-10 h-10 bg-secondary rounded-full" />
-                <div>
-                  <p className="text-card-foreground text-xs font-medium">And Pars</p>
-                </div>
-              </div>
-            </div>
-          </div>
 
         </div>
       </div>
