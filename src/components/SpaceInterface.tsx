@@ -174,14 +174,14 @@ const SpaceInterface = () => {
                       </div>
                     </div>
 
-                    {/* Right: Planet Navigation */}
+                    {/* Right: Technical Skills */}
                     <div className="col-span-2 space-y-4">
-                      {planetNavigation.map((planet, index) => <div key={index} className="flex items-center space-x-3 group cursor-pointer">
-                          <div className="w-16 h-16 rounded-full overflow-hidden bg-card">
-                            <img src={planet.image} alt={planet.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                      {skills.slice(0, 3).map((skill, index) => <div key={index} className="flex items-center space-x-3 group cursor-pointer">
+                          <div className="w-16 h-16 rounded-full overflow-hidden bg-card p-3">
+                            <img src={skill.image} alt={skill.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
                           </div>
                           <div className="flex-1">
-                            <p className="text-xs text-card-foreground/60 mb-1">{planet.name}</p>
+                            <p className="text-xs text-card-foreground/60 mb-1">{skill.title}</p>
                             <div className="w-6 h-6 bg-nav-item rounded-full flex items-center justify-center">
                               <ChevronDown className="w-3 h-3 text-accent-foreground" />
                             </div>
