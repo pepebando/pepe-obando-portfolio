@@ -42,6 +42,23 @@ const SpaceInterface = () => {
     name: "Ultimate Guide to Interplanetary Travel",
     image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=80&h=80&fit=crop"
   }];
+
+  const skills = [
+    { title: "Unreal Engine", image: "https://img.icons8.com/nolan/240/unreal-engine.png" },
+    { title: "Python", image: "https://cdn.brandfetch.io/idbpOFBgcc/w/398/h/398/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B" },
+    { title: "Wordpress", image: "https://cdn.brandfetch.io/idbnlnCBDY/w/400/h/400/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B" },
+    { title: "PHP", image: "https://cdn.brandfetch.io/idYqAg6C_T/w/200/h/200/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B" },
+    { title: "C++", image: "https://img.icons8.com/color/240/c-plus-plus-logo.png" },
+    { title: "C#", image: "https://img.icons8.com/color/240/c-sharp-logo-2.png" },
+    { title: "Node JS", image: "https://img.icons8.com/fluency/240/node-js.png" },
+    { title: "Javascript", image: "https://img.icons8.com/color/240/javascript--v1.png" },
+    { title: "VUE", image: "https://img.icons8.com/nolan/240/vue-js.png" },
+    { title: "SQL", image: "https://img.icons8.com/external-soft-fill-juicy-fish/240/external-sql-coding-and-development-soft-fill-soft-fill-juicy-fish.png" },
+    { title: "MySQL", image: "https://img.icons8.com/fluency/240/my-sql.png" },
+    { title: "Reality Capture", image: "https://www.modenatechnologies.com/site/wp-content/uploads/2021/08/RealityCapture-Logo.jpg" },
+    { title: "GIT", image: "https://img.icons8.com/color/240/git.png" },
+    { title: "CSS", image: "https://img.icons8.com/ultraviolet/100/css.png" }
+  ];
   return <div className="min-h-screen bg-background p-8 px-[33px]">
       {/* Main Container */}
       <div className="max-w-7xl mx-auto h-screen bg-container-bg rounded-3xl overflow-hidden relative">
@@ -98,6 +115,29 @@ const SpaceInterface = () => {
             }} />
                 {/* Cosmic overlay */}
                 <div className="absolute inset-0 bg-gradient-cosmic" />
+
+                {/* Skills Section */}
+                <div className="absolute top-1/2 left-8 right-8 transform -translate-y-1/2 z-20">
+                  <div className="bg-sidebar-bg/80 backdrop-blur-sm rounded-2xl p-6 border border-card-foreground/10">
+                    <h2 className="text-2xl font-bold text-card-foreground mb-6 text-center">Technical Skills</h2>
+                    <div className="grid grid-cols-7 gap-4">
+                      {skills.map((skill, index) => (
+                        <div key={index} className="flex flex-col items-center space-y-2 group cursor-pointer">
+                          <div className="w-12 h-12 bg-card/80 rounded-lg p-2 group-hover:bg-nav-item/20 transition-colors duration-300 flex items-center justify-center">
+                            <img 
+                              src={skill.image} 
+                              alt={skill.title} 
+                              className="w-8 h-8 object-contain"
+                            />
+                          </div>
+                          <span className="text-xs text-card-foreground/80 text-center group-hover:text-nav-item transition-colors duration-300">
+                            {skill.title}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
 
                 {/* Bottom Content */}
                 <div className="absolute bottom-8 left-8 right-8">
