@@ -172,7 +172,7 @@ const CinematicCarousel = () => {
       <div className="relative z-10 h-full p-8 flex">
         
         {/* Left Content */}
-        <div className="flex-1 flex flex-col justify-center space-y-6 max-w-2xl">
+        <div className="flex-1 flex flex-col justify-center space-y-0 max-w-3xl">
           {/* Category Badge */}
           <div className="flex items-center space-x-4">
             <span className="bg-nav-item text-accent-foreground text-xs px-3 py-1 rounded font-bold tracking-wider">
@@ -187,7 +187,7 @@ const CinematicCarousel = () => {
           {/* Main Title */}
           <div className="space-y-4">
             <h1 className="text-5xl font-black text-card-foreground leading-none tracking-tighter">
-              {currentProject.title.split(" ").map((word, index) => <div key={index} className="block">
+              {currentProject.title.split(" ").map((word, index) => <div key={index} className="inline-block mx-[7px]">
                   {word}
                   {index === 0 && <span className="text-nav-item text-4xl ml-2">
                       {currentProject.id}
