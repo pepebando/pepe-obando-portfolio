@@ -94,15 +94,10 @@ const SpaceInterface = () => {
           <>
                 {/* Hero Background */}
                 <div className="absolute inset-0 bg-cover bg-center" style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1200&h=800&fit=crop')`
+              backgroundImage: `url('/lovable-uploads/21902a73-f377-4f68-af39-db9f4f83a656.png')`
             }} />
                 {/* Cosmic overlay */}
                 <div className="absolute inset-0 bg-gradient-cosmic" />
-                
-                {/* Floating astronaut with flowers effect - using the cosmic hero image */}
-                <div className="absolute inset-0 bg-cover bg-center opacity-90" style={{
-              backgroundImage: `url('/src/assets/cosmic-hero.jpg')`
-            }} />
 
                 {/* Bottom Content */}
                 <div className="absolute bottom-8 left-8 right-8">
