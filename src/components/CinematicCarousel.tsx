@@ -22,6 +22,7 @@ const CinematicCarousel = () => {
   const [showGallery, setShowGallery] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [projects, setProjects] = useState<Project[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const categories = [
     { title: 'All', tags: '' },
@@ -69,10 +70,12 @@ const CinematicCarousel = () => {
           rating: "G",
           genre: "ArchViz",
           description: "This is a placeholder description",
-          image: "/imgs/archviztello/m12.jpg",
+          image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=400&fit=crop",
           category: "ue, archviz",
           featured: true
         }]);
+      } finally {
+        setIsLoading(false);
       }
     };
     
@@ -81,6 +84,15 @@ const CinematicCarousel = () => {
 
   const currentProject = projects[currentIndex];
   const nextProjectsList = nextProjects.map(index => projects[index % projects.length]);
+
+  // Show loading state while projects are being fetched
+  if (isLoading || !currentProject) {
+    return (
+      <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-container-bg via-container-bg to-black flex items-center justify-center">
+        <div className="text-card-foreground">Loading...</div>
+      </div>
+    );
+  }
 
 
   if (showGallery) {
