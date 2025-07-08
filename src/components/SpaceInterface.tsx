@@ -166,28 +166,26 @@ const SpaceInterface = () => {
                       Discover More
                     </Button>
                     
+                    {/* Technical Skills */}
+                    <div className="mt-8">
+                      <h2 className="text-2xl font-bold text-card-foreground mb-6 text-center">Technical Skills</h2>
+                      <div className="grid grid-cols-7 gap-4">
+                        {skills.map((skill, index) => <div key={index} className="flex flex-col items-center space-y-2 group cursor-pointer">
+                            <div className="w-12 h-12 bg-card/80 rounded-lg p-2 group-hover:bg-nav-item/20 transition-colors duration-300 flex items-center justify-center">
+                              <img src={skill.image} alt={skill.title} className="w-8 h-8 object-contain" />
+                            </div>
+                            <span className="text-xs text-card-foreground/80 text-center group-hover:text-nav-item transition-colors duration-300">
+                              {skill.title}
+                            </span>
+                          </div>)}
+                      </div>
+                    </div>
+                    
                     {/* Social Icons */}
                     <div className="flex justify-center space-x-4 pt-4">
                       
                       
                       <div className="w-8 h-8 bg-card-foreground/20 rounded-full" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Content - Technical Skills */}
-                <div className="absolute bottom-8 left-8 right-8">
-                  <div className="">
-                    <h2 className="text-2xl font-bold text-card-foreground mb-6 text-center">Technical Skills</h2>
-                    <div className="grid grid-cols-7 gap-4">
-                      {skills.map((skill, index) => <div key={index} className="flex flex-col items-center space-y-2 group cursor-pointer">
-                          <div className="w-12 h-12 bg-card/80 rounded-lg p-2 group-hover:bg-nav-item/20 transition-colors duration-300 flex items-center justify-center">
-                            <img src={skill.image} alt={skill.title} className="w-8 h-8 object-contain" />
-                          </div>
-                          <span className="text-xs text-card-foreground/80 text-center group-hover:text-nav-item transition-colors duration-300">
-                            {skill.title}
-                          </span>
-                        </div>)}
                     </div>
                   </div>
                 </div>
