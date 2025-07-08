@@ -99,12 +99,7 @@ const SpaceInterface = () => {
             </Button>
 
             {/* Center: Language Selector */}
-            <div className="flex items-center space-x-2 bg-sidebar-bg/80 backdrop-blur-sm rounded-full px-4 py-2">
-              <Globe className="w-4 h-4 text-sidebar-text" />
-              <span className="text-sidebar-text text-sm">{selectedLanguage}</span>
-              <span className="text-sidebar-text text-sm">PT</span>
-              <span className="text-sidebar-text text-sm">FR</span>
-            </div>
+            
 
             {/* Right: Search and Profile */}
             <div className="flex items-center space-x-3">
