@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "title": "Advanced Architectural Visualization",
+    "subtitle": "Archviz in Unreal Engine 5.5",
+    "image": "/imgs/archviztello/m12.jpg",
+    "color": "bg-titlep1",
+    "tags": ["ue", "archviz"],
+    "description": [
+      "This is a placeholder description"
+    ]
+  }
+]
