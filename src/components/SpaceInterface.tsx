@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, Search, User, ChevronDown, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ProjectViewer3D from "@/components/ProjectViewer3D";
+import CinematicCarousel from "@/components/CinematicCarousel";
 
 const SpaceInterface = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
@@ -97,8 +97,8 @@ const SpaceInterface = () => {
           {/* Main Content Area */}
           <div className="col-span-10 relative overflow-hidden">
             {activeTab === "02" ? (
-              /* Project Viewer 3D */
-              <ProjectViewer3D />
+              /* Cinematic Carousel */
+              <CinematicCarousel />
             ) : (
               /* Default Overview Content */
               <>
