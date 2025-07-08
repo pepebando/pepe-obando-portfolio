@@ -228,7 +228,7 @@ const CinematicCarousel = () => {
         </div>
 
         {/* Right Sidebar - Categories (positioned to match the red box in design) */}
-        <div className="absolute top-8 right-8 w-64 bg-container-bg/80 backdrop-blur-sm rounded-lg p-6 border border-card-foreground/10 py-[24px] my-[39px]">
+        <div className="absolute top-8 right-8 w-64 bg-container-bg/80 backdrop-blur-sm rounded-lg p-6 border border-card-foreground/10 my-[39px] py-[2px]">
           <h3 className="text-card-foreground font-bold text-lg mb-4">Categories</h3>
           <div className="space-y-2">
             {categories.map(category => <button key={category.tags} onClick={() => setSelectedCategory(category.tags)} className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${selectedCategory === category.tags ? 'text-nav-item bg-nav-item/20 border border-nav-item/30' : 'text-card-foreground/70 hover:text-card-foreground hover:bg-card-foreground/5'}`}>
@@ -241,27 +241,25 @@ const CinematicCarousel = () => {
       {/* Bottom Carousel - positioned in the red box area */}
       <div className="absolute bottom-8 left-8 right-8 z-20">
         <Carousel opts={{
-          align: "start",
-          loop: true
-        }} className="w-full">
+        align: "start",
+        loop: true
+      }} className="w-full">
           <CarouselContent className="-ml-4">
-            {filteredProjects.map((project, index) => (
-              <CarouselItem key={project.id} className="pl-4 basis-1/4">
+            {filteredProjects.map((project, index) => <CarouselItem key={project.id} className="pl-4 basis-1/6 py-8 px-0">
                 <div className="flex flex-col items-center space-y-3 cursor-pointer transition-all duration-300 relative z-10" onClick={() => setCurrentIndex(index)}>
                   <div className={`w-32 h-24 bg-cover bg-center rounded-xl transition-all duration-300 border-2 ${index === currentIndex ? 'border-nav-item shadow-xl scale-105' : 'border-transparent hover:border-nav-item/30 hover:scale-102'}`} style={{
-                    backgroundImage: `url(${project.image})`
-                  }} />
+                backgroundImage: `url(${project.image})`
+              }} />
                   <div className="text-center">
                     <p className="text-card-foreground text-sm font-medium leading-tight max-w-32">
                       {project.title}
                     </p>
                   </div>
                 </div>
-              </CarouselItem>
-            ))}
+              </CarouselItem>)}
           </CarouselContent>
-          <CarouselPrevious className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10 z-10" />
-          <CarouselNext className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10 z-10" />
+          <CarouselPrevious className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10 z-10 mx-[21px]" />
+          <CarouselNext className="text-card-foreground border-card-foreground/30 hover:bg-card-foreground/10 z-10 px-0 mx-[23px]" />
         </Carousel>
       </div>
 
