@@ -187,7 +187,7 @@ const CinematicCarousel = () => {
           {/* Main Title */}
           <div className="space-y-4">
             <h1 className="text-5xl font-black text-card-foreground leading-none tracking-tighter">
-              {currentProject.title.split(" ").map((word, index) => <div key={index} className="inline-block mx-[7px]">
+              {currentProject.title.split(" ").map((word, index) => <div key={index} className="inline-block mx-[3px] py-[14px]">
                   {word}
                 </div>)}
             </h1>
@@ -206,14 +206,14 @@ const CinematicCarousel = () => {
               <span className="text-sm">{currentProject.genre}</span>
             </div>
 
-            <p className="text-card-foreground/90 text-sm leading-relaxed max-w-md">
+            <p className="text-card-foreground/90 text-sm leading-relaxed max-w-md py-[7px]">
               {currentProject.description}
             </p>
           </div>
 
           {/* Action Buttons */}
           <div className="flex items-center space-x-4">
-            <Button onClick={() => setShowGallery(true)} className="bg-nav-item hover:bg-nav-item/90 text-accent-foreground rounded-lg px-8 py-3 font-bold">
+            <Button onClick={() => setShowGallery(true)} className="bg-nav-item hover:bg-nav-item/90 text-accent-foreground rounded-lg px-8 font-bold text-base py-[15px] my-[15px]">
               <Play className="w-5 h-5 mr-2" />
               PLAY
             </Button>
