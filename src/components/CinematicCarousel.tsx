@@ -94,7 +94,7 @@ const CinematicCarousel = () => {
       <div className="relative w-full h-full overflow-hidden bg-container-bg">
         {/* Main Content Grid */}
         <div className="h-full flex">
-          {/* Left Side - Video Player Area */}
+          {/* Left Side - Full Screen Video Player */}
           <div className="flex-1 relative">
             {/* Background Image */}
             <div 
@@ -127,73 +127,18 @@ const CinematicCarousel = () => {
                 <span>{currentProject.rating}</span>
               </div>
             </div>
+
+            {/* Close Button */}
+            <Button 
+              onClick={() => setShowGallery(false)}
+              variant="ghost" 
+              size="sm" 
+              className="absolute top-6 right-6 text-white hover:bg-white/20"
+            >
+              <Plus className="w-5 h-5 rotate-45" />
+            </Button>
           </div>
 
-          {/* Right Side - Gallery */}
-          <div className="w-96 bg-sidebar-bg/95 backdrop-blur-sm p-6 overflow-y-auto">
-            {/* Gallery Header */}
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <div className="flex items-center space-x-3 mb-2">
-                  <span className="text-nav-item font-semibold">Watch Next</span>
-                  <span className="text-sidebar-text text-sm">Trending</span>
-                  <span className="text-sidebar-text text-sm">Recommended</span>
-                </div>
-              </div>
-              <Button 
-                onClick={() => setShowGallery(false)}
-                variant="ghost" 
-                size="sm" 
-                className="text-sidebar-text hover:bg-sidebar-text/20"
-              >
-                <Plus className="w-4 h-4 rotate-45" />
-              </Button>
-            </div>
-
-            {/* Gallery Grid */}
-            <div className="space-y-4">
-              {projects.map((project, index) => (
-                <div 
-                  key={project.id}
-                  onClick={() => setCurrentIndex(index)}
-                  className="flex items-start space-x-3 p-3 rounded-lg hover:bg-card/50 cursor-pointer transition-all duration-200 group"
-                >
-                  {/* Thumbnail */}
-                  <div className="relative w-24 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-                    />
-                    {/* Play Overlay */}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200">
-                      <Play className="w-5 h-5 text-white" />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-card-foreground font-medium text-sm leading-tight mb-1 line-clamp-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-card-foreground/70 text-xs mb-2 line-clamp-1">
-                      {project.subtitle}
-                    </p>
-                    <div className="flex items-center space-x-2 text-xs text-card-foreground/60">
-                      <span>{project.year}</span>
-                      <span>•</span>
-                      <span>{project.duration}</span>
-                    </div>
-                    <div className="mt-1">
-                      <span className="bg-nav-item/20 text-nav-item text-xs px-2 py-0.5 rounded">
-                        {project.category}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     );
