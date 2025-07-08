@@ -76,14 +76,14 @@ const ContactForm = () => {
                   <SelectTrigger className="bg-container-bg/50 border-card-foreground/20 text-card-foreground">
                     <SelectValue placeholder="Select Project Type" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="web-development">Web Development</SelectItem>
-                    <SelectItem value="mobile-app">Mobile App</SelectItem>
-                    <SelectItem value="game-development">Game Development</SelectItem>
-                    <SelectItem value="database-design">Database Design</SelectItem>
-                    <SelectItem value="3d-modeling">3D Modeling</SelectItem>
-                    <SelectItem value="consulting">Consulting</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
+                  <SelectContent className="bg-container-bg border-card-foreground/20 text-card-foreground">
+                    <SelectItem value="web-development" className="text-card-foreground hover:bg-nav-item/20 focus:bg-nav-item/20">Web Development</SelectItem>
+                    <SelectItem value="mobile-app" className="text-card-foreground hover:bg-nav-item/20 focus:bg-nav-item/20">Mobile App</SelectItem>
+                    <SelectItem value="game-development" className="text-card-foreground hover:bg-nav-item/20 focus:bg-nav-item/20">Game Development</SelectItem>
+                    <SelectItem value="database-design" className="text-card-foreground hover:bg-nav-item/20 focus:bg-nav-item/20">Database Design</SelectItem>
+                    <SelectItem value="3d-modeling" className="text-card-foreground hover:bg-nav-item/20 focus:bg-nav-item/20">3D Modeling</SelectItem>
+                    <SelectItem value="consulting" className="text-card-foreground hover:bg-nav-item/20 focus:bg-nav-item/20">Consulting</SelectItem>
+                    <SelectItem value="other" className="text-card-foreground hover:bg-nav-item/20 focus:bg-nav-item/20">Other</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
