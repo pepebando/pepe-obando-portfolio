@@ -45,20 +45,20 @@ const SpaceInterface = () => {
   }];
 
   const skills = [
-    { title: "Unreal Engine", image: "https://img.icons8.com/nolan/240/unreal-engine.png" },
-    { title: "Python", image: "https://cdn.brandfetch.io/idbpOFBgcc/w/398/h/398/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B" },
-    { title: "Wordpress", image: "https://cdn.brandfetch.io/idbnlnCBDY/w/400/h/400/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B" },
-    { title: "PHP", image: "https://cdn.brandfetch.io/idYqAg6C_T/w/200/h/200/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B" },
-    { title: "C++", image: "https://img.icons8.com/color/240/c-plus-plus-logo.png" },
-    { title: "C#", image: "https://img.icons8.com/color/240/c-sharp-logo-2.png" },
-    { title: "Node JS", image: "https://img.icons8.com/fluency/240/node-js.png" },
-    { title: "Javascript", image: "https://img.icons8.com/color/240/javascript--v1.png" },
-    { title: "VUE", image: "https://img.icons8.com/nolan/240/vue-js.png" },
-    { title: "SQL", image: "https://img.icons8.com/external-soft-fill-juicy-fish/240/external-sql-coding-and-development-soft-fill-soft-fill-juicy-fish.png" },
-    { title: "MySQL", image: "https://img.icons8.com/fluency/240/my-sql.png" },
-    { title: "Reality Capture", image: "https://www.modenatechnologies.com/site/wp-content/uploads/2021/08/RealityCapture-Logo.jpg" },
-    { title: "GIT", image: "https://img.icons8.com/color/240/git.png" },
-    { title: "CSS", image: "https://img.icons8.com/ultraviolet/100/css.png" }
+    { title: "Unreal Engine", image: "https://img.icons8.com/color/240/unreal-engine.png" },
+    { title: "Python", image: "https://img.icons8.com/color/240/python--v1.png" },
+    { title: "Wordpress", image: "https://img.icons8.com/color/240/wordpress.png" },
+    { title: "PHP", image: "https://img.icons8.com/offices/240/php-logo.png" },
+    { title: "C++", image: "https://img.icons8.com/fluency/240/c-plus-plus-logo.png" },
+    { title: "C#", image: "https://img.icons8.com/fluency/240/c-sharp-logo.png" },
+    { title: "Node JS", image: "https://img.icons8.com/color/240/nodejs.png" },
+    { title: "Javascript", image: "https://img.icons8.com/fluency/240/javascript.png" },
+    { title: "VUE", image: "https://img.icons8.com/color/240/vue-js.png" },
+    { title: "SQL", image: "https://img.icons8.com/color/240/sql.png" },
+    { title: "MySQL", image: "https://img.icons8.com/color/240/mysql-logo.png" },
+    { title: "Reality Capture", image: "https://img.icons8.com/color/240/3d-glasses.png" },
+    { title: "GIT", image: "https://img.icons8.com/fluency/240/github.png" },
+    { title: "CSS", image: "https://img.icons8.com/color/240/css3.png" }
   ];
   return <div className="min-h-screen bg-background p-8 px-[33px]">
       {/* Main Container */}
