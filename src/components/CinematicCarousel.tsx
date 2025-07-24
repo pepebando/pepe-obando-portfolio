@@ -154,15 +154,15 @@ const CinematicCarousel = () => {
         </Button>
 
         {/* Main Carousel Container */}
-        <div className="h-full flex items-center justify-center p-8">
+        <div className="h-full flex flex-col items-center justify-center p-4 md:p-8">
           <Carousel opts={{
             align: "center",
             loop: true
-          }} className="w-full max-w-6xl">
+          }} className="w-full max-w-6xl mb-6">
             <CarouselContent>
               {mediaItems.map((media, index) => (
                 <CarouselItem key={index} className="flex items-center justify-center">
-                  <div className="w-full h-[80vh] flex items-center justify-center bg-black/20 rounded-xl">
+                  <div className="w-full h-[60vh] md:h-[70vh] flex items-center justify-center bg-black/20 rounded-xl">
                     {media.type === "video" ? (
                       <video 
                         controls 
@@ -183,6 +183,39 @@ const CinematicCarousel = () => {
             <CarouselPrevious className="text-white border-white/30 hover:bg-white/20 left-4" />
             <CarouselNext className="text-white border-white/30 hover:bg-white/20 right-4" />
           </Carousel>
+
+          {/* Thumbnail Navigation */}
+          {mediaItems.length > 1 && (
+            <div className="w-full max-w-4xl">
+              <Carousel opts={{
+                align: "start",
+                loop: false,
+                dragFree: true
+              }} className="w-full">
+                <CarouselContent className="-ml-2">
+                  {mediaItems.map((media, index) => (
+                    <CarouselItem key={index} className="pl-2 basis-1/4 md:basis-1/6">
+                      <div 
+                        className={`aspect-video bg-cover bg-center rounded-lg cursor-pointer transition-all duration-300 border-2 ${
+                          index === currentMediaIndex 
+                            ? 'border-nav-item scale-105' 
+                            : 'border-white/20 hover:border-white/50'
+                        }`}
+                        style={{
+                          backgroundImage: media.type === "video" 
+                            ? `url(${media.src.replace(/\.[^/.]+$/, '')}.jpg)` 
+                            : `url(${media.src})`
+                        }}
+                        onClick={() => setCurrentMediaIndex(index)}
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="text-white border-white/30 hover:bg-white/20 -left-4" />
+                <CarouselNext className="text-white border-white/30 hover:bg-white/20 -right-4" />
+              </Carousel>
+            </div>
+          )}
         </div>
 
         {/* Project Info */}
