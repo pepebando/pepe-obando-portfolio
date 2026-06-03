@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VR Projects · José Obando</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -14,7 +15,6 @@
       --bg:        #051424;
       --surface:   #0d1c2d;
       --surface-2: #122131;
-      --surface-3: #1c2b3c;
       --text:      #d4e4fa;
       --muted:     #849495;
       --outline:   rgba(58,73,75,.45);
@@ -51,7 +51,7 @@
       z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 40px; height: var(--nav-h);
-      background: rgba(5,20,36,.82);
+      background: rgba(5,20,36,.85);
       backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--outline);
     }
@@ -71,14 +71,13 @@
       font-family: var(--mono); font-size:11px; font-weight:500;
       letter-spacing:.08em; text-transform:uppercase;
       color: var(--muted); background:none; border:none;
-      padding: 8px 14px; cursor:pointer; border-radius:4px;
+      padding: 8px 14px 10px; cursor:pointer; border-radius:4px;
       transition: color .2s, background .2s;
       white-space: nowrap;
     }
     .nav-cat::after {
       content:''; position:absolute; bottom:0; left:14px; right:14px;
-      height:1.5px; background:var(--cyan);
-      box-shadow: 0 0 8px var(--cyan);
+      height:1.5px; background:var(--cyan); box-shadow: 0 0 8px var(--cyan);
       opacity:0; transition:opacity .2s;
     }
     .nav-cat:hover { color:var(--text); background:rgba(255,255,255,.04); }
@@ -89,8 +88,7 @@
     .nav-icon {
       display:flex; align-items:center; justify-content:center;
       width:36px; height:36px; border-radius:4px;
-      border:1px solid var(--outline);
-      background:rgba(255,255,255,.03);
+      border:1px solid var(--outline); background:rgba(255,255,255,.03);
       color:var(--muted); text-decoration:none;
       transition: color .2s, border-color .2s, box-shadow .2s, background .2s;
     }
@@ -104,9 +102,9 @@
        PROJECTS
     ══════════════════════════════ */
     #projects {
-      position:relative; z-index:2;
+      position: relative; z-index: 2;
       padding: calc(var(--nav-h) + 48px) 64px 80px;
-      background:var(--bg);
+      background: var(--bg);
     }
 
     .proj-header {
@@ -187,7 +185,6 @@
       filter:brightness(.72) saturate(.85);
       transition:transform .5s var(--ease), filter .4s;
     }
-    /* scanlines */
     .v-thumb::after {
       content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
       background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.05) 3px,rgba(0,0,0,.05) 4px);
@@ -226,11 +223,19 @@
     .v-meta { font-family:var(--mono); font-size:10px; font-weight:400; letter-spacing:.04em; }
 
     /* ══════════════════════════════
+       DIVIDER
+    ══════════════════════════════ */
+    .grad-line {
+      height:1px; position:relative; z-index:2;
+      background:linear-gradient(90deg,transparent,var(--cyan),var(--purple),transparent);
+    }
+
+    /* ══════════════════════════════
        CLIENTS / LOGOS
     ══════════════════════════════ */
     #clients {
       position:relative; z-index:2;
-      padding:64px 64px;
+      padding:64px;
       background:var(--surface);
       border-top:1px solid var(--outline);
       border-bottom:1px solid var(--outline);
@@ -440,7 +445,6 @@
 </div>
 
 <script>
-/* Data */
 const CATS = {
   video360:    { name:'Video 360°',               color:'#00dbe7', videos:[
     {youtubeId:'XMPqDknaNQk', title:'BYD 360° Video',         client:'BYD'},
@@ -454,9 +458,9 @@ const CATS = {
     {youtubeId:'O48hbQlG2e0', title:'Dropal Rodilla',  client:'Dropal'},
   ]},
   mixta:       { name:'Realidad Mixta',            color:'#5eead4', videos:[
-    {youtubeId:'adMGdzjgkV0', title:'Decorador de Interiores',  client:'EKS'},
-    {youtubeId:'HLu6K-98w2M', title:'Natura Anchor Elements',   client:'Natura'},
-    {youtubeId:'XbrtwgM6-lo', title:'Demo Portales Galápagos',  client:'Claro'},
+    {youtubeId:'adMGdzjgkV0', title:'Decorador de Interiores', client:'EKS'},
+    {youtubeId:'HLu6K-98w2M', title:'Natura Anchor Elements',  client:'Natura'},
+    {youtubeId:'XbrtwgM6-lo', title:'Demo Portales Galápagos', client:'Claro'},
   ]},
   recorridos:  { name:'Recorridos Virtuales',      color:'#a78bfa', videos:[
     {youtubeId:'TgRomgoqdCg', title:'Dexkedol Recorrido VR',    client:'Dexkedol'},
@@ -469,22 +473,23 @@ const CATS = {
   ]},
 };
 
-function buildGrid(catId){
+function buildGrid(catId) {
   const grid = document.getElementById('video-grid');
   grid.innerHTML = '';
   const all = [];
-  if(catId==='all'){
-    Object.entries(CATS).forEach(([id,cat])=>cat.videos.forEach(v=>all.push({...v,catId:id,catName:cat.name,catColor:cat.color})));
+  if (catId === 'all') {
+    Object.entries(CATS).forEach(([id, cat]) =>
+      cat.videos.forEach(v => all.push({...v, catId: id, catName: cat.name, catColor: cat.color})));
   } else {
-    const cat=CATS[catId]; if(!cat) return;
-    cat.videos.forEach(v=>all.push({...v,catId,catName:cat.name,catColor:cat.color}));
+    const cat = CATS[catId]; if (!cat) return;
+    cat.videos.forEach(v => all.push({...v, catId, catName: cat.name, catColor: cat.color}));
   }
-  document.getElementById('proj-count').textContent=`${all.length} proyectos`;
-  all.forEach((v,i)=>{
-    const card=document.createElement('div');
-    card.className='v-card';
-    card.style.animationDelay=(i*35)+'ms';
-    card.innerHTML=`
+  document.getElementById('proj-count').textContent = all.length + ' proyectos';
+  all.forEach((v, i) => {
+    const card = document.createElement('div');
+    card.className = 'v-card';
+    card.style.animationDelay = (i * 35) + 'ms';
+    card.innerHTML = `
       <div class="v-thumb">
         <img src="https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg"
              alt="${v.title}" loading="lazy" onerror="this.style.opacity='.08'">
@@ -500,33 +505,35 @@ function buildGrid(catId){
         <div class="v-title">${v.title}</div>
         <div class="v-meta" style="color:${v.catColor}">${v.catName}</div>
       </div>`;
-    card.addEventListener('click',()=>openModal(v.youtubeId));
+    card.addEventListener('click', () => openModal(v.youtubeId));
     grid.appendChild(card);
   });
 }
 
-window.filterTo = function(catId, btn){
-  document.querySelectorAll('.cat-tab,.nav-cat').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-  const navBtn=document.querySelector(`.nav-cat[data-cat="${catId}"]`);
-  if(navBtn) navBtn.classList.add('active');
-  const tabBtn=document.querySelector(`.cat-tab[data-cat="${catId}"]`);
-  if(tabBtn) tabBtn.classList.add('active');
+window.filterTo = function(catId, btn) {
+  document.querySelectorAll('.cat-tab, .nav-cat').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const navBtn = document.querySelector('.nav-cat[data-cat="' + catId + '"]');
+  if (navBtn) navBtn.classList.add('active');
+  const tabBtn = document.querySelector('.cat-tab[data-cat="' + catId + '"]');
+  if (tabBtn) tabBtn.classList.add('active');
   buildGrid(catId);
 };
 
-window.openModal = function(youtubeId){
-  document.getElementById('modal-iframe').src=`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
+window.openModal = function(youtubeId) {
+  document.getElementById('modal-iframe').src = 'https://www.youtube.com/embed/' + youtubeId + '?autoplay=1&rel=0';
   document.getElementById('modal').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 };
-window.closeModal = function(){
-  document.getElementById('modal-iframe').src='';
+window.closeModal = function() {
+  document.getElementById('modal-iframe').src = '';
   document.getElementById('modal').classList.remove('open');
-  document.body.style.overflow='';
+  document.body.style.overflow = '';
 };
-window.handleModalBg = e=>{ if(e.target===document.getElementById('modal')) closeModal(); };
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+window.handleModalBg = function(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+};
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
 buildGrid('all');
 </script>
