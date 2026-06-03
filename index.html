@@ -262,27 +262,6 @@
     .logo-item:hover img { opacity:.8; }
 
     /* ══════════════════════════════
-       FOOTER
-    ══════════════════════════════ */
-    footer {
-      position:relative; z-index:2;
-      padding:36px 64px;
-      display:flex; align-items:center; justify-content:space-between;
-      border-top:1px solid var(--outline); background:var(--bg);
-      gap:24px;
-    }
-
-    .footer-left { display:flex; flex-direction:column; gap:6px; }
-    .footer-tag { font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.04em; }
-
-    .footer-links { display:flex; gap:24px; }
-    .footer-link {
-      font-family:var(--mono); font-size:11px; color:var(--muted);
-      text-decoration:none; letter-spacing:.04em; transition:color .2s;
-    }
-    .footer-link:hover { color:var(--cyan); }
-
-    /* ══════════════════════════════
        MODAL
     ══════════════════════════════ */
     #modal {
@@ -321,7 +300,6 @@
 
       #projects { padding: calc(var(--nav-h) + 24px) 20px 64px; }
       #clients   { padding:48px 20px; }
-      footer     { padding:32px 20px; flex-direction:column; align-items:flex-start; }
 
       .video-grid { grid-template-columns:1fr 1fr; gap:10px; }
       .logos-grid { gap:24px 32px; }
@@ -413,20 +391,11 @@
     <div class="logo-item"><img src="Logos/High Res PNG-Accu-Chek logo white small.png" alt="Accu-Chek"></div>
     <div class="logo-item"><img src="Logos/Doloneurobion.png" alt="Neurobion"></div>
     <div class="logo-item"><img src="Logos/pharma.png" alt="Pharma"></div>
+    <div class="logo-item"><img src="Logos/Geely-Auto-Logo.png" alt="Geely"></div>
+    <div class="logo-item"><img src="Logos/Purina-Logo.png" alt="Purina"></div>
+    <div class="logo-item"><img src="Logos/logo-pronobis-2025-retina.png" alt="Pronobis"></div>
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-left">
-    <span class="logo-mark" style="font-size:16px;">VR projects</span>
-    <span class="footer-tag">José Obando · Digital Architect of the Metaverse</span>
-  </div>
-  <div class="footer-links">
-    <a href="mailto:jsobando96@gmail.com" class="footer-link">jsobando96@gmail.com</a>
-    <a href="https://wa.me/593979334394" class="footer-link" target="_blank" rel="noopener">+593 979 334 394</a>
-  </div>
-</footer>
 
 <!-- MODAL -->
 <div id="modal" onclick="handleModalBg(event)">
