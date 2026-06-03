@@ -796,8 +796,7 @@
     </button>
     <div class="modal-frame">
       <iframe id="modal-iframe" frameborder="0"
-        allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-        allowfullscreen></iframe>
+        allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>
     </div>
   </div>
 </div>
@@ -888,7 +887,9 @@ fill.position.set(-4, 1, 3); scene.add(fill);
 const rim = new THREE.DirectionalLight(0x60A5FA, .9);
 rim.position.set(0, -3, -4); scene.add(rim);
 
-scene.add(Object.assign(new THREE.PointLight(0x7C3AED, 3.5, 12), { position: new THREE.Vector3(-2, 2, 3) }));
+const pLight = new THREE.PointLight(0x7C3AED, 3.5, 12);
+pLight.position.set(-2, 2, 3);
+scene.add(pLight);
 
 const controls = new OrbitControls(cam, canvas);
 controls.enableDamping = true;
