@@ -462,8 +462,9 @@ function buildGrid(catId) {
     card.style.animationDelay = (i * 35) + 'ms';
     card.innerHTML = `
       <div class="v-thumb">
-        <img src="https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg"
-             alt="${v.title}" loading="lazy" onerror="this.style.opacity='.08'">
+        <img src="https://img.youtube.com/vi/${v.youtubeId}/maxresdefault.jpg"
+             alt="${v.title}" loading="lazy"
+             onerror="this.src='https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg';this.onerror=null">
         <div class="play-overlay">
           <div class="play-btn">
             <svg viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
